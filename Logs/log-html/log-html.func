@@ -1,0 +1,13 @@
+<cms:func 'log-html' msg='' file='' ><cms:ignore>
+    ---
+    Wraps message with <br> and default log is HTML.
+    <cms:call 'log-html' 'Hello' />
+    ---
+    You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+    Donate and help keep functions updated!
+    Support requests: tony.smirnov@gmail.com "Antony"
+    </cms:ignore>
+    <cms:log msg = "<br><cms:show msg /><br>"
+        file = "<cms:get 'file' default='my_log.html' />"
+    />
+</cms:func>
