@@ -7,7 +7,8 @@
     Donate and help keep functions updated!
     Support requests: tony.smirnov@gmail.com "Antony"
     </cms:ignore>
-    <cms:log msg = "<br><cms:show msg /><br>"
+    <cms:log
+        msg  = "<br><cms:show msg /><br>"
         file = "<cms:get 'file' default='my_log.html' />"
     />
 </cms:func>

@@ -1,0 +1,18 @@
+<cms:func 'create-object'><cms:ignore>
+    ---
+    Given unlimited number of named params, returns valid JSON.
+    Example -
+
+        <cms:call 'create-object' name='Vagabond' type='Yacht' is_cat='1' has_sail='YES' />
+
+    Results in -
+
+        {"name":"Vagabond","type":"Yacht","is_cat":"1","has_sail":"YES"}
+
+    ---
+    You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+    Donate and help keep functions updated!
+    Support requests: tony.smirnov@gmail.com "Antony"
+    </cms:ignore>
+    <cms:show k_named_args as_json='1' />
+</cms:func>

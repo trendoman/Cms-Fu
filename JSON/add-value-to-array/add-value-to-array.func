@@ -1,0 +1,21 @@
+<cms:func 'add-value-to-array' value='' array=''><cms:ignore>
+    ---
+    Adds a given value ("string", array "[]" or object "{}") into the "[]" array.
+        *   Will create a new array, if one not present in 'global' scope.
+    Example -
+
+        <cms:call 'add-value-to-array' job 'my_todo' />
+
+    ---
+    You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+    Donate and help keep functions updated!
+    Support requests: tony.smirnov@gmail.com "Antony"
+    </cms:ignore>
+    <cms:get array into='myarray' />
+    <cms:if "<cms:is_array myarray />" >
+        <cms:put var="<cms:show array />." value=value scope='global' />
+    <cms:else />
+        <cms:put var="<cms:show array />" value='[]' scope='global' is_json='1' />
+        <cms:put var="<cms:show array />." value=value scope='global' />
+    </cms:if>
+</cms:func>
