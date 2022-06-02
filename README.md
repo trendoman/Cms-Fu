@@ -5,26 +5,22 @@
 
 ## Contents
 
-Call me maybe..
-
-## Install
-
+Accepting requests..
 
 ## Installation
 
 1. Clone repo to website's root
     - or download zip &ndash; [master.zip](https://github.com/trendoman/Cms-Fu/archive/refs/heads/master.zip)
-
- ```bash
- git clone https://github.com/trendoman/Cms-Fu _CmsFu
- ```
+    ```bash
+    git clone https://github.com/trendoman/Cms-Fu _CmsFu
+    ```
 2. Copy files to a directory with snippets, into a suggested folder 'funcs'
- ```bash
-cp -r _CmsFu/* mysnippets/funcs
- ```
+   ```bash
+   cp -r _CmsFu/* mysnippets/funcs
+   ```
 3. Register the desired function via **embed**
-```html
-<cms:embed
-    'funcs/JSON/create-object/create-object.func'
-    />
-```
+   ```html
+   <cms:embed
+      'funcs/JSON/create-object/create-object.func'
+      />
+   ```
