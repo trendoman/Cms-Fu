@@ -1,6 +1,6 @@
 # php-time-limit
 
-Makes server wait
+Override PHP maximum time for executing a script
 
 ```html
 <cms:call 'php-time-limit' '600' />

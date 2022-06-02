@@ -1,6 +1,6 @@
 <cms:func 'php-time-limit' timeout='120'><cms:ignore>
     ---
-    Makes server wait
+    Override PHP maximum time for executing a script
     Example -
 
         <cms:call 'php-time-limit' '0' />
