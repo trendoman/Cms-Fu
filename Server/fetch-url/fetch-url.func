@@ -11,7 +11,7 @@
     Support requests: tony.smirnov@gmail.com "Antony"
     </cms:ignore>
     <cms:php>
-        global $CTX, $DB;
+        global $CTX, $DB, $FUNCS;
         $mycookie = '';
 
         if( isset($_SERVER['HTTP_CMS_FETCH_ONCE']) ) return;
@@ -65,15 +65,15 @@
 
             /* accept cookies for redirects */
             if( $accept_cookie ){
-                $cookie_file = dirname(__FILE__). '/_mycookies.tmp';
-                /* in 'couch' folder */
+                $tmp_dir = $FUNCS->get_tmp_dir();
+                $cookie_file = $tmp_dir.'myfetch_cookies.txt';
                 curl_setopt($ch, CURLOPT_COOKIESESSION, true);
                 curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file);
                 curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
             }
 
             $output = curl_exec($ch);
-            $status = curl_getinfo($ch); /* unused */
+            $status = curl_getinfo($ch);
             curl_close($ch);
             $CTX->set('_curl_status', $status);
 
