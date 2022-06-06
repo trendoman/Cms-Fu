@@ -4,8 +4,7 @@
 
 ## Intro
 
-Paginated approach works fine in browsers via JS-powered clicking on the buttons. [CSV importer]() / [CSV exporter]() are based on that _frontend solution_.<br>
-Larger websites need to have many tasks automated. Let us deal with it by **paginating without browser**.
+Paginated approach works fine in browsers via JS-powered clicking on the buttons. [CSV importer](https://www.couchcms.com/forum/viewtopic.php?f=5&t=8803) / [CSV exporter](https://www.couchcms.com/forum/viewtopic.php?f=8&t=11378) are based on that _frontend solution_. Larger websites need to have many tasks automated. Let us deal with it by **paginating without browser**.
 
 Take a brief look at the functions presented in this area, namely &mdash;
 * add-job
