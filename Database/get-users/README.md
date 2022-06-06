@@ -23,13 +23,13 @@ Result &mdash;
 
 As a reminder, Couch sets following levels &mdash;
 
- `access_level` |    name   	|      title
-:-------:| :--------- | :----------
-    1    | superadmin | Super Admin
-    2    | admin      | Administrator
-    3    | authenticated_user_special | Authenticated User (Special)
-    4    | authenticated_user         | Authenticated User
-    5    | unauthenticated_user       | Everybody
+| `access_level` |    name   	|      title |
+|:-------:| :--------- | :---------- |
+|    1    | superadmin | Super Admin |
+|    2    | admin      | Administrator |
+|    3    | authenticated_user_special | Authenticated User (Special) |
+|    4    | authenitcated_user         | Authenticated User |
+|    5    | unauthenticated_user       | Everybody |
 
 More details in documentation on [Users and Access Control](https://docs.couchcms.com/concepts/users.html).
 
