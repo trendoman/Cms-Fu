@@ -399,6 +399,40 @@ Here we go! &mdash;
 ```
 </details>
 
+All of that became possible with the help of a few functions and a short listing &mdash;
+
+<details open><summary>Listing of index.php code</summary>
+
+```html
+<cms:embed 'myfuncs.inc' />
+
+<cms:call 'php-time-limit' '0' />
+<cms:call 'limit-decline' '2' 'Wait..' />
+
+<cms:if "<cms:is_ajax />">
+
+    <cms:func 'set-snippet-path' name=''>
+        _sitemaps/<cms:show name />.inc
+    </cms:func>
+
+    <cms:call 'task-file-runner' path_func='set-snippet-path' />
+
+</cms:if>
+
+<cms:func 'show-report' report=''>
+    <h2><cms:show report.msg /></h2>
+    <cms:show_json report />
+</cms:func>
+
+<cms:call 'add-job' name='sitemap' list='mylist' report_func='show-report' masterpage='index.php' qs='limit=3000' />
+
+<cms:test ignore='1'>
+    <cms:call 'execute-jobs' mylist />
+</cms:test>
+
+```
+
+</details>
 
 ## Requirements
 

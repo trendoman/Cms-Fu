@@ -31,9 +31,9 @@ Func **add-job** quickly sets up variables relevant to jobs and arranges them in
 
 ## Parameters
 
-Required | Optional
-:------- | :-------
-<ul><li>name</li><li>list</li></ul> | <ul><li>masterpage</li><li>qs</li><li>report_func</li><li>engine_func</li></ul>
+|Required | Optional |
+|:------- | :------- |
+| <ul><li>name</li><li>list</li></ul> | <ul><li>masterpage</li><li>qs</li><li>report_func</li><li>engine_func</li></ul> |
 
 
 Add further as many optional parameters as you wish. See examples below.
@@ -343,19 +343,19 @@ Let's dive into variables that **add-job** sets up in JSON.
 | <!-- -->    | <!-- -->    |
 |-------------:|-------------|
  **`name`** | name of the job
- `is_complete` | it is the flag that will become *1* when the job is done (has no tasks left).
- `status` | either `JOB_ERROR` or `JOB_COMPLETE` that is set when job is done
- `error` | error placeholder for errors generated in execution
+ is_complete | it is the flag that will become *1* when the job is done (has no tasks left).
+ status | either `JOB_ERROR` or `JOB_COMPLETE` that is set when job is done
+ error | error placeholder for errors generated in execution
  **`initial_task`** | when *masterpage* is given, the link holds initial URL of the job. Custom engine can use this to set some initial value e.g. batch number
  **`current_task`** | when *masterpage* is given, it is initially a copy of previous URL.<br>Then it keeps URL of current request with changing _pg_ e.g. `index.php?pg=5&limit=10` or, for alternative engine, can have some value like current number of records
  **`sequent_task`** | when *masterpage* is given, it is initially a copy of previous URL.<br>Then it provides a crucial URL for the next request. Custom engine may use this to indicate the next task number or next database query to process, etc.
- `report[]` | this array will hold all reports from each small task
- `msg` | meant to display a final message from job, e.g. `Job [ my-lazy-job ] FAILED`
- `time_start` | marks time when job is started. Will display date in format `Y-m-d H:i:s` and add milliseconds if you connect a function **show-ms**.
- `time_close` | marks time when job is complete, format same as above
- `notes[]` | notes from your job, such as helping messages about engine and report etc.
+ report[] | this array will hold all reports from each small task
+ msg | meant to display a final message from job, e.g. `Job [ my-lazy-job ] FAILED`
+ time_start | marks time when job is started. Will display date in format `Y-m-d H:i:s` and add milliseconds if you connect a function **show-ms**.
+ time_close | marks time when job is complete, format same as above
+ notes[] | notes from your job, such as helping messages about engine and report etc.
 **`list`** | itinerary of jobs this job belongs to
-`user[]` | sub-node holding all user-defined parameters and their values
+user[] | sub-node holding all user-defined parameters and their values
 
 Variables set in **bold** can be configured via params of **add-job** i.e.
 ```html
@@ -364,7 +364,7 @@ Variables set in **bold** can be configured via params of **add-job** i.e.
 Configurables can be accessed as direct descendants i.e. `job.current_task`<br>
 Other user-supplied parameters will appear in **user** section, so look there &mdash; `job.user.max-limit`<br>
 
-**Note:** Function **add-job** will not create links in __*_task__ variables, if any of the those variables is set explicitly i.e.
+**Note:** Function **add-job** will not create links in \*\_task variables, if any of the those variables is set explicitly i.e.
 ```html
 <cms:call 'add-job' name='my-first-job' list='my-todo' masterpage='index.php' current_task='0' />
 ```
