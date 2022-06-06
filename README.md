@@ -5,22 +5,49 @@
 
 ## Contents
 
-Accepting requests..
+Look inside
 
 ## Installation
 
-1. Clone repo to website's root
-    - or download zip &ndash; [master.zip](https://github.com/trendoman/Cms-Fu/archive/refs/heads/master.zip)
+1. Clone the repo to your  **`snippets`** folder and name repo locally as **`func`** &mdash;
+
     ```bash
-    git clone https://github.com/trendoman/Cms-Fu _CmsFu
+    cd /var/www/html/example.com/mysnippets
     ```
-2. Copy files to a directory with snippets, into a suggested folder 'funcs'
-   ```bash
-   cp -r _CmsFu/* mysnippets/funcs
-   ```
-3. Register the desired function via **embed**
+    ```bash
+    git clone http://github.com/trendoman/Cms-Fu funcs
+    ```
+    - or download zip &ndash; [master.zip](https://github.com/trendoman/Cms-Fu/archive/refs/heads/master.zip)
+
+2. Register the desired function via cms:**embed**
    ```html
-   <cms:embed
-      'funcs/JSON/create-object/create-object.func'
-      />
+   <cms:embed 'myfunc.func' />
    ```
+
+
+## Support
+
+
+Donate to keep functions updated!
+
+### email
+
+Support requests: tony.smirnov@gmail.com<br>
+You'll get a *well-informed up-to-date* reply.
+
+
+### donation
+
+**Bitcoin**: bc1qsl2tulmsjcvpkegepeunmumz599yz0lhuktdjt
+
+Desperately waiting for your help that enables
+- keep up with support requests;
+- continue receiving your [thankyou's](https://github.com/trendoman/Dignotas)
+- improve existing functions
+- write new code
+
+### forum
+
+Browse helpful Tips&Tricks subforum: https://www.couchcms.com/forum/viewforum.php?f=8
+
+**Telegram**: https://t.me/couchcms

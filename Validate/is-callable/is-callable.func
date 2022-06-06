@@ -3,14 +3,16 @@
     Is a named or anonymous function available to be called?
     Example -
 
-        <cms:call 'is-callable' 'myfunc' />
+        <cms:call 'is-callable' func='myfunc' /> - normal funcs
+        <cms:call 'is-callable' func= myfunc />  - anonymous funcs
 
     ---
     You should have downloaded this function from https://github.com/trendoman/Cms-Fu
     Donate and help keep functions updated!
     Support requests: tony.smirnov@gmail.com "Antony"
     </cms:ignore><cms:trim>
-    <cms:if "<cms:func_exists func />" >1<cms:else /><cms:ignore>Anonymous?</cms:ignore><cms:get func into='func' />
-        <cms:if "<cms:is_array func.code />" && "<cms:is_array func.params />" >1<cms:else />0</cms:if>
+    <cms:if "<cms:func_exists func />" >1
+    <cms:else_if "<cms:is_array func.code />" && "<cms:is_array func.params />" /><cms:ignore>Anonymous?</cms:ignore>1
+    <cms:else />0
     </cms:if></cms:trim>
 </cms:func>
