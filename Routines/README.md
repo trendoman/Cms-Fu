@@ -26,6 +26,7 @@ Main thread will be running indefinitely untill all the jobs are done, so let's 
 <cms:call 'php-time-limit' '0' />
 <cms:call 'limit-decline' '1' 'Wait..' />
 ```
+The funcs and their READMEs are in the Server folder.
 
 ### Create the job
 
@@ -79,7 +80,7 @@ Temporarily display **mylist** with my cms:__show_json__ tag to review the confi
 
 ### Add the "engine"
 
-Now, everything looks good. Let's place our engine-wrapper "supervisor" function call and keep it under tight control with cms:__test__. Refresh the page in browser to see the output and then *ignore* the function for a moment.
+Now, everything looks good. Let's place our engine-wrapper "supervisor" function call and keep it under tight control with cms:__test__. Refresh the page in browser to see the output first, and then *ignore* the function for a moment.
 
 ```html
 <cms:test ignore='0'>
@@ -133,7 +134,7 @@ Review the hints and realize that our task must respond with special keywords in
 
 ### Set up task-runner
 
-Since the template we chose is actually the one that has all our code - `index.php` - and the links already point to it, there must be some code that handles the JSON response. That code is our **task-file-runner** function. Couch's tag cms:__is_ajax__ will allow to control what is visible to the Ajaxed-visitor. I'll remind that our engine - function **fetch-url** is already configured within **execute-jobs** func to send ajax headers.
+Since the template we chose is actually the one that has all our code - `index.php` - and the links already point to it, there must be some code that handles the JSON response. That code is our **task-file-runner** function. Couch's tag cms:__is_ajax__ will allow controlling what is visible to the Ajaxed-visitor. I'll remind that our engine - function **fetch-url** is already configured within **execute-jobs** func to send ajax headers.
 
 Somewhere at the top of the page, but after the `myfuncs.inc` place the controlling tags with the *task-runner* &mdash;
 ```html
@@ -155,7 +156,7 @@ Somewhere at the top of the page, but after the `myfuncs.inc` place the controll
 ```
 I have already pasted the callback function **set-snippet-path** from the README example. It will help me hide the path of the embedded snippet and not pass it via URL.
 
-At this moment, preparations are complete and we can begin crafting the actual task.
+At this moment, preparations are complete, and we can begin crafting the actual task.
 
 ### Task testing
 
@@ -215,7 +216,7 @@ The content of the `sitemap.inc` snippet will be split into 3 parts
 ```
 </details>
 
-Visit the page with a sample URL `index.php?pg=25` and verify the file `sitemap.xml` in written to the website's root.
+Visit the page with sample URLs `index.php`, `index.php?pg=5` and verify the file `sitemap.xml` in written to the website's root.
 
 ### Response
 
@@ -456,10 +457,10 @@ All mentioned funcs don't have further requirements.
 ### Quick install
 
 Clone the repo to your  **`snippets`** folder and name repo locally as **`func`** &mdash;
-```bash
+```shell
 cd /var/www/html/example.com/mysnippets
 ```
-```bash
+```shell
 git clone http://github.com/trendoman/Cms-Fu funcs
 ```
 or download the zip and place accordingly.
@@ -483,13 +484,13 @@ You'll get a *well-informed up-to-date* reply.
 
 Desperately waiting for your help that enables
 - keep up with support requests;
-- continue receiving your [thankyou's](https://github.com/trendoman/Dignotas)
+- continue receiving your [thank you's](https://github.com/trendoman/Dignotas)
 - improve existing functions
 - write new code
 
 ### forum
 
-Browse helpful Tips&Tricks subforum: https://www.couchcms.com/forum/viewforum.php?f=8
+Browse helpful Tips&Tricks sub forum: https://www.couchcms.com/forum/viewforum.php?f=8
 
 **Telegram**: https://t.me/couchcms
 

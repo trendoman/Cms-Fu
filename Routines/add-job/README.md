@@ -54,7 +54,7 @@ An itinerary for the jobs. It is an array with job objects, e.g.
 
 ### masterpage
 
-An optional parameter that is mainly used with jobs that rely on URL requests. Function **add-job** will take the *masterpage* and convert it to URL with a querystring.
+An optional parameter that is mainly used with jobs that rely on URL requests. Function **add-job** will take the *masterpage* and convert it to URL with a query string.
 ```html
 <cms:call 'add-job' name='sitemaps' list='mytodo' masterpage='index.php' />
 ```
@@ -68,7 +68,7 @@ Note that tag cms:__link__ is used, so with pretty-urls [enabled](https://docs.c
 
 ### qs
 
-If the previous parameter *masterpage* is present, a querystring value from **qs** will be added to the URL.
+If the previous parameter *masterpage* is present, a query string value from **qs** will be added to the URL.
 ```html
 <cms:call 'add-job' name='sitemaps' list='mytodo' masterpage='index.php' qs='limit=50'/>
 ```
@@ -347,7 +347,7 @@ Let's dive into variables that **add-job** sets up in JSON.
  status | either `JOB_ERROR` or `JOB_COMPLETE` that is set when job is done
  error | error placeholder for errors generated in execution
  **`initial_task`** | when *masterpage* is given, the link holds initial URL of the job. Custom engine can use this to set some initial value e.g. batch number
- **`current_task`** | when *masterpage* is given, it is initially a copy of previous URL.<br>Then it keeps URL of current request with changing _pg_ e.g. `index.php?pg=5&limit=10` or, for alternative engine, can have some value like current number of records
+ **`current_task`** | when *masterpage* is given, it is initially a copy of previous URL.<br>Then it keeps URL of current request with changing _pg_ e.g. `index.php?pg=5&limit=10` or, for alternative engine, can have some values like current number of records
  **`sequent_task`** | when *masterpage* is given, it is initially a copy of previous URL.<br>Then it provides a crucial URL for the next request. Custom engine may use this to indicate the next task number or next database query to process, etc.
  report[] | this array will hold all reports from each small task
  msg | meant to display a final message from job, e.g. `Job [ my-lazy-job ] FAILED`
@@ -368,7 +368,7 @@ Other user-supplied parameters will appear in **user** section, so look there &m
 ```html
 <cms:call 'add-job' name='my-first-job' list='my-todo' masterpage='index.php' current_task='0' />
 ```
-This gives much needed space for custom engines and tasks. Not every job will be using URL requests, but every job must have some kind of pagination control.
+This gives much-needed space for custom engines and tasks. Not every job will be using URL requests, but every job must have some kind of pagination control.
 ```json
 { ..
   "initial_task":"",
@@ -509,12 +509,12 @@ You'll get a *well-informed up-to-date* reply.
 
 Desperately waiting for your help that enables
 - keep up with support requests;
-- continue receiving your [thankyou's](https://github.com/trendoman/Dignotas)
+- continue receiving your [thank you's](https://github.com/trendoman/Dignotas)
 - improve existing functions
 - write new code
 
 ### forum
 
-Browse helpful Tips&Tricks subforum: https://www.couchcms.com/forum/viewforum.php?f=8
+Browse helpful Tips&Tricks sub forum: https://www.couchcms.com/forum/viewforum.php?f=8
 
 **Telegram**: https://t.me/couchcms

@@ -50,7 +50,7 @@ The job will stop if there is an **error**, that's understandable. Job will also
 
 An important feature of the function is that during the execution, in two crucial moments, there happen **callback** calls.
 
-#### call_func
+#### report_func
 
 One crucial moment is the outcome of job. Upon job completion, whether with error or success, func **execute-jobs** will look for user-supplied name of the function that must be called. Job object can have the variable **report_func** set with a user-defined func's name as value.
 ```html
@@ -130,12 +130,12 @@ You'll get a *well-informed up-to-date* reply.
 
 Desperately waiting for your help that enables
 - keep up with support requests;
-- continue receiving your [thankyou's](https://github.com/trendoman/Dignotas)
+- continue receiving your [thank you's](https://github.com/trendoman/Dignotas)
 - improve existing functions
 - write new code
 
 ### forum
 
-Browse helpful Tips&Tricks subforum: https://www.couchcms.com/forum/viewforum.php?f=8
+Browse helpful Tips&Tricks sub forum: https://www.couchcms.com/forum/viewforum.php?f=8
 
 **Telegram**: https://t.me/couchcms
