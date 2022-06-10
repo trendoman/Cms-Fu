@@ -162,7 +162,7 @@ At this moment, preparations are complete, and we can begin crafting the actual 
 
 Our task is meant to generate a sitemap. Shouldn't be complicated for the only clonable template that I have. But there are over *7000 cloned pages!* Let's paginate.
 
-As good coders, we first test and verify our code works. So, make sure to embed the snippet directly first and see how those links appear just fine. Tag cms:__ignore__ around all out previous code will help temporarily disable everything besides the cms:**embed** (for debug!) &mdash;
+As good coders, we first test and verify our code works. So, make sure to embed the snippet directly first and see how those links appear just fine. Tag cms:__ignore__ around all our previous code will help temporarily disable everything besides the cms:**embed** (for debug!) &mdash;
 ```html
 <cms:ignore>
   ..

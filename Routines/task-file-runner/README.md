@@ -25,7 +25,7 @@ If the **path_func** is empty or not even added to the call, then default snippe
 
 ## Variables
 
-Func creates a host of variables that will be available within the embedded snippet. Namely, &mdash;
+Func creates a host of __task.\*__ variables that will be available within the embedded snippet. Namely, &mdash;
 * task.success
 * task.continue
 * task.current_task
@@ -91,11 +91,11 @@ The meat of this function is the following part &mdash;
 ```
 It creates **response** for the parent caller and encapsulates everything your snipept task has to say to the above standing "supervisors".
 
-With almost zero-config, this function can be used as is without edits and become indispensable "manager" for all snippets.
+With almost zero-config, this function can be used as is and become indispensable "manager" for all snippets.
 
 ### direct call
 
-Very important feature is that this func properly incapsulates the embeddable snippet. Func does not receive any reference of the job object, the only info is the job's name. If you inspect the code, it will prove that **task-file-runner** is a very handy function to embed almost any snippet with activity that does something and returns results in JSON. The only hard-coded part is the snippet's extention - it is expected to be *.inc* by default and can be customized via a **path_func** callback.
+Very important feature is that this func can be called directly. It incapsulates the embeddable snippet, provides variables to it and returns result as JSON. Func does not receive any reference of the job object, the only info is the job's name. The only hard-coded part is the snippet's extension - it is expected to be *.inc* by default and can be customized via a **path_func** callback.
 
 
 ## Requirements

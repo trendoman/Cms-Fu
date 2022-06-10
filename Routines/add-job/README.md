@@ -32,7 +32,7 @@ Func **add-job** quickly sets up variables relevant to jobs and arranges them in
 ## Parameters
 
 |Required | Optional |
-|:------- | :------- |
+|-------- | -------- |
 | <ul><li>name</li><li>list</li></ul> | <ul><li>masterpage</li><li>qs</li><li>report_func</li><li>engine_func</li></ul> |
 
 

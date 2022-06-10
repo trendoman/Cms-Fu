@@ -41,7 +41,7 @@ That page should be expecting the request and will respond at the very least wit
 ```
 </details>
 
-So these 4 items are governing the runflow of the function. If the small task finished with **success**, signals that it can **continue** and provides the URL in **sequent_task** - then the discussed function will take that link from `sequent_task` and make a new request to it. It will also pass on the complete job object configured in the beginning. It allows to have a lot of data at hand for the tasks and maintain ultimate control over the process.
+So these 4 items are governing the runflow of the function. If the small task finished with **success**, signals that it can **continue** and provides the URL in **sequent_task** - then the discussed function will take that link from `sequent_task` variable and will perform a new request to that link.
 
 The job will stop if there is an **error**, that's understandable. Job will also stop when task reported only **success* e.g. without **continue** AND **sequent_task**. This means that the task can not find anything to do further. In practice, tag cms:**pages** gives empty variable **k_paginated_link_next** when the visitor is on the last paginated page, - that's the perfect candidate for the **sequent_task**.
 
@@ -68,10 +68,9 @@ Tasks can spam a lot of useful information into the report, that is up to the co
 
 #### engine_func
 
-Jobs are often based on visiting some URL. Pagination, for example, depends on the paginated prefix parameter in URL e.g. **pg** in *blog-list.php?pg=3*.<br>
-Initial research on the **execute-jobs** function was meant to imitate a pagination without frontend clicking, so the func was created with that approach in mind.
+Jobs are often based on visiting some URL. Pagination, for example, depends on the paginated prefix parameter in URL e.g. **pg** in *blog-list.php?pg=3*. Initial research on the **execute-jobs** function was meant to imitate a pagination without frontend clicking, so the func was created with that approach in mind.
 
-Default engine for the **execute-jobs** is the function **fetch-url**. It does nothing but requests a given URL with *XMLHttpRequest* header aka Ajax. Read more on **fetch-url** to understand how it works.
+Default engine for the **execute-jobs** is the function **fetch-url**. It does 2 things - requests a given URL with *XMLHttpRequest* header aka Ajax and returns the response. Read more on **fetch-url** to understand how it works.
 
 Custom engine can be defined in the job object via the **engine_func** parameter e.g.
 ```html
