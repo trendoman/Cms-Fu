@@ -1,0 +1,30 @@
+<cms:func 'create-pages' masterpage='' limit='' total=''><cms:ignore>
+    ---
+    This func is a part of the Tutorial "Create-pages"
+
+    ---
+    You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+    Donate and help keep functions updated!
+    Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:set qs = "<cms:concat 'max-count=' total '&limit=' limit '&target=' masterpage />" />
+
+   <cms:if "<cms:is_ajax />"><cms:call 'task-file-runner' /></cms:if>
+
+   <cms:func 'report' rep=''>
+      <cms:show_json rep />
+   </cms:func>
+
+   <cms:call 'add-job' name='create-pages' list='mytodo' masterpage=k_template_name qs=qs report_func='report'/>
+   <cms:call 'execute-jobs' mytodo />
+</cms:func>
+
+<cms:ignore>
+   Example call, as described in the Tutorial
+
+   <cms:embed 'myfuncs.inc' />
+   <cms:call 'php-time-limit' '0' />
+   <cms:call 'limit-decline' '2' 'Wait..' />
+
+   <cms:call 'create-pages' 'fields.php' '5' '20' />
+</cms:ignore>

@@ -8,7 +8,7 @@ Records time and memo.
 
 Unlimited number of memos are kept in the global variable **clock**.
 
-Format of time is **Y-m-d H:i:s** with optional milliseconds.
+Format of time is **H:i:s** with optional milliseconds.
 
 ## Parameters
 

@@ -1,0 +1,14 @@
+<cms:embed 'funcs/JSON/add-value-to-array/add-value-to-array.func' />
+<cms:embed 'funcs/JSON/create-object/create-object.func' />
+<cms:embed 'funcs/Logs/log-html/log-html.func' />
+<cms:embed 'funcs/Server/php-time-limit/php-time-limit.func' />
+<cms:embed 'funcs/Server/limit-decline/limit-decline.func' />
+<cms:embed 'funcs/Server/fetch-url/fetch-url.func' />
+<cms:embed 'funcs/Server/sleep/sleep.func' />
+<cms:embed 'funcs/DateTime/show-ms/show-ms.func' />
+<cms:embed 'funcs/DateTime/clock/clock.func' />
+<cms:embed 'funcs/Routines/execute-jobs/execute-jobs.func' />
+<cms:embed 'funcs/Routines/add-job/add-job.func' />
+<cms:embed 'funcs/Database/get-users/get-users.func' />
+<cms:embed 'funcs/Validate/is-callable/is-callable.func' />
+<cms:embed 'funcs/Routines/task-file-runner/task-file-runner.func' />
