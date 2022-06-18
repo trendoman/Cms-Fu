@@ -2,12 +2,12 @@
 
 Fetch users with a certain access level.
 
-```html
+```xml
 <cms:call 'get-users' '10' />
 ```
 Result &mdash;
 
-```txt
+```js
 [
     {
           "k_page_name" : "admin"
@@ -17,11 +17,12 @@ Result &mdash;
     }
 ]
 ```
+
 ## Parameters
 
 * access_level
 
-As a reminder, Couch sets following levels &mdash;
+Couch sets following levels &mdash;
 
 | `access_level` |    name   	|      title |
 |:-------:| :--------- | :---------- |
@@ -31,12 +32,13 @@ As a reminder, Couch sets following levels &mdash;
 |    4    | authenitcated_user         | Authenticated User |
 |    5    | unauthenticated_user       | Everybody |
 
-More details in documentation on [Users and Access Control](https://docs.couchcms.com/concepts/users.html).
+More details in [**Documentation &raquo; Users and Access Control**](https://docs.couchcms.com/concepts/users.html).
 
 ## Usage
 
 Enumerate with 'cms:each' &mdash;
-```html
+
+```xml
 <cms:set myusers = "<cms:call 'get-users' access_level='10' />" is_json='1' />
 
 <cms:each myusers as='user' is_json='1'>
@@ -44,8 +46,17 @@ Enumerate with 'cms:each' &mdash;
     <cms:show user.extended_user_email /><br>
 </cms:each>
 ```
+
 Pretty print with my **show_json** tag &mdash;
-```html
+
+```xml
 <cms:show_json "<cms:call 'get-users' access_level='10' />" no_validate='1' />
 ```
-(Details about **show_json** can be found in the [README](https://github.com/trendoman/Tweakus-Dilectus/blob/main/anton.cms%40ya.ru__tags-new/__readme__show_json.md))
+
+## Related pages
+
+* [**Documentation &raquo; Users and Access Control**](https://docs.couchcms.com/concepts/users.html)
+
+## Related tags
+
+* [**Tweakus-Dilectus &raquo; show_json**](https://github.com/trendoman/Tweakus-Dilectus/tree/main/anton.cms%40ya.ru__tags-new/show_json/)

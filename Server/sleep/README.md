@@ -1,12 +1,13 @@
 # sleep
 
 Make server wait. Count in seconds.
-Example -
-```html
+
+```xml
 <cms:call 'sleep' for='0.500' />
 ```
-```html
-<cms:call 'sleep' '1' />
+
+```xml
+<cms:call 'sleep' '5' />
 ```
 
 ## Parameters
@@ -16,10 +17,19 @@ Example -
 ## Usage
 
 Add 'sleeping' code that imitates a heavy page loading for a while (*5* seconds)
-```html
+
+```xml
 <cms:call 'sleep' '5' />
 ```
-It equals to &ndash;
-```html
-<cms:php>usleep(1000000 * 5);</cms:php>
+
+Internally func employs PHP function *usleep*.
+
+## Installation
+
+```xml
+<cms:embed 'funcs/Server/sleep/sleep.func' />
 ```
+
+## Support
+
+Check out my dedicated [**SUPPORT**](/SUPPORT.md) page.

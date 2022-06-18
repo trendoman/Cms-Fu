@@ -446,7 +446,7 @@ And let the job run &mdash;
 
 That is all.
 
-<details><summary>full listing</summary>
+<details open><summary>full listing</summary>
 
 ```html
 <cms:embed 'myfuncs.inc' />

@@ -2,7 +2,6 @@
 
 Is a named or anonymous function available to be called?
 
-Example -
 ```html
 <cms:call 'is-callable' func='myfunc' />
 ```
@@ -14,6 +13,23 @@ Example -
 ## Usage
 
 Perfect for **callback** functions e.g.
-```html
+
+```xml
 <cms:if "<cms:call 'is-callable' func=callback_func />"><cms:call callback_func myparam /></cms:if>
 ```
+
+A related tag 'cms:func_exists' works only with named functions, that's why **is-callable** is the better substitution.
+
+## Installation
+
+```xml
+<cms:embed 'funcs/Validate/is-callable/is-callable.func' />
+```
+
+## Related tags
+
+* [**Midware Tags Reference &raquo; func_exists**](https://github.com/trendoman/Midware/tree/main/tags-reference/func_exists.md)
+
+## Support
+
+Check out my dedicated [**SUPPORT**](/SUPPORT.md) page.

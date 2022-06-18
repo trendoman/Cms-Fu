@@ -2,7 +2,7 @@
 
 Records time and memo.
 
-```html
+```xml
 <cms:call 'clock' memo='Timer started'/>
 ```
 
@@ -20,7 +20,7 @@ Designed to track tag's time, this function will keep memos and times in a list.
 
 ### record
 
-```html
+```xml
 <cms:call 'clock' memo='Tag :pages start'/>
 
 .. some probably long-executing code ..
@@ -32,11 +32,14 @@ Designed to track tag's time, this function will keep memos and times in a list.
 ### print
 
 Print the result to review where the bottleneck is —
-```html
+
+```xml
 <cms:show_json clock />
 ```
+
 Or, if you are unsure whether tag **show_json** is available, use tag **show** with parameter **as_json** &mdash;
-```html
+
+```xml
 <cms:if "<cms:tag_exists 'show_json' />">
   <cms:show_json clock />
 <cms:else />
@@ -55,8 +58,7 @@ Or, if you are unsure whether tag **show_json** is available, use tag **show** w
 
 ## Installation
 
-
-```html
+```xml
 <cms:embed 'funcs/DateTime/clock/clock.func' />
 ```
 
@@ -65,6 +67,10 @@ Or, if you are unsure whether tag **show_json** is available, use tag **show** w
 ### optional
 
 * [__show-ms__](../show-ms/) &mdash; this is a function that displays milliseconds. Add it to your stack of functions to record time with precision.
+
+## Related tags
+
+* [**Tweakus-Dilectus &raquo; show_json**](https://github.com/trendoman/Tweakus-Dilectus/tree/main/anton.cms%40ya.ru__tags-new/show_json/)
 
 ## Support
 
