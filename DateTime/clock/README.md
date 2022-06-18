@@ -56,12 +56,6 @@ Or, if you are unsure whether tag **show_json** is available, use tag **show** w
 }
 ```
 
-## Installation
-
-```xml
-<cms:embed 'funcs/DateTime/clock/clock.func' />
-```
-
 ## Requirements
 
 ### optional
@@ -71,6 +65,12 @@ Or, if you are unsure whether tag **show_json** is available, use tag **show** w
 ## Related tags
 
 * [**Tweakus-Dilectus &raquo; show_json**](https://github.com/trendoman/Tweakus-Dilectus/tree/main/anton.cms%40ya.ru__tags-new/show_json/)
+
+## Installation
+
+```xml
+<cms:embed 'funcs/DateTime/clock/clock.func' />
+```
 
 ## Support
 

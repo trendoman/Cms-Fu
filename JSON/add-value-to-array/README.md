@@ -18,16 +18,6 @@ Expected values are &mdash;
 * value
 * array
 
-<!--
-## Usage
--->
-
-## Installation
-
-```xml
-<cms:embed 'funcs/JSON/add-value-to-array/add-value-to-array.func' />
-```
-
 ## Related tags
 
 * [**Tweakus-Dilectus &raquo; show_json**](https://github.com/trendoman/Tweakus-Dilectus/tree/main/anton.cms%40ya.ru__tags-new/show_json/)
@@ -35,6 +25,12 @@ Expected values are &mdash;
 ## Related pages
 
 * [**Midware tutorials &raquo; Couch Arrays**](https://github.com/trendoman/Midware/tree/main/tutorials/Arrays)
+
+## Installation
+
+```xml
+<cms:embed 'funcs/JSON/add-value-to-array/add-value-to-array.func' />
+```
 
 ## Support
 

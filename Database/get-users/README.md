@@ -60,3 +60,13 @@ Pretty print with my **show_json** tag &mdash;
 ## Related tags
 
 * [**Tweakus-Dilectus &raquo; show_json**](https://github.com/trendoman/Tweakus-Dilectus/tree/main/anton.cms%40ya.ru__tags-new/show_json/)
+
+## Installation
+
+```xml
+<cms:embed 'funcs/Database/get-users/get-users.func' />
+```
+
+## Support
+
+Check out my dedicated [**SUPPORT**](/SUPPORT.md) page.

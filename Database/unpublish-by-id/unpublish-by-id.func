@@ -1,0 +1,23 @@
+<cms:func 'unpublish-by-id' id='' ><cms:ignore>
+   ---
+   Unpublish a given page
+   Example -
+
+      <cms:hide><cms:call 'unpublish-by-id' '11234' /></cms:hide>
+      <cms:call 'unpublish-by-id' k_page_id />
+
+   Return 1 or 0, if page not found
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:if "<cms:validate "<cms:trim id />" validator='non_zero_integer' />">
+      <cms:php>
+         global $DB;
+         $modified = array( 'publish_date' => '0000-00-00 00:00:00', 'modification_date' => '<cms:date format='Y-m-d H:i:s' />' );
+         $rs = $DB->update( K_TBL_PAGES, $modified, "id='" . $DB->sanitize( <cms:show id /> ). "'" );
+         echo $rs;
+      </cms:php>
+   </cms:if>
+</cms:func>

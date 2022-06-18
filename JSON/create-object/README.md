@@ -15,12 +15,6 @@ Results in –
 
 Any number of named parameters.
 
-## Installation
-
-```xml
-<cms:embed 'funcs/JSON/create-object/create-object.func' />
-```
-
 ## Related tags
 
 * [**Tweakus-Dilectus &raquo; show_json**](https://github.com/trendoman/Tweakus-Dilectus/tree/main/anton.cms%40ya.ru__tags-new/show_json/)
@@ -28,6 +22,12 @@ Any number of named parameters.
 ## Related pages
 
 * [**Midware tutorials &raquo; Couch Arrays**](https://github.com/trendoman/Midware/tree/main/tutorials/Arrays)
+
+## Installation
+
+```xml
+<cms:embed 'funcs/JSON/create-object/create-object.func' />
+```
 
 ## Support
 

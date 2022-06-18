@@ -20,15 +20,15 @@ Perfect for **callback** functions e.g.
 
 A related tag 'cms:func_exists' works only with named functions, that's why **is-callable** is the better substitution.
 
+## Related tags
+
+* [**Midware Tags Reference &raquo; func_exists**](https://github.com/trendoman/Midware/tree/main/tags-reference/func_exists.md)
+
 ## Installation
 
 ```xml
 <cms:embed 'funcs/Validate/is-callable/is-callable.func' />
 ```
-
-## Related tags
-
-* [**Midware Tags Reference &raquo; func_exists**](https://github.com/trendoman/Midware/tree/main/tags-reference/func_exists.md)
 
 ## Support
 
