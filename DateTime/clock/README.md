@@ -1,6 +1,6 @@
 # clock
 
-Records time and memo.
+Records time with a memo.
 
 ```xml
 <cms:call 'clock' memo='Timer started'/>

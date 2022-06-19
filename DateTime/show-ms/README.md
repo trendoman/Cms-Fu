@@ -30,6 +30,10 @@ Result &mdash;
 2022-06-02 18:45:54 788
 ```
 
+## Related tags
+
+* [**Midware Tags Reference &raquo; date**](https://github.com/trendoman/Midware/tree/main/tags-reference/date.md)
+
 ## Installation
 
 ```xml

@@ -21,7 +21,7 @@ Any number of named parameters.
 
 ## Related pages
 
-* [**Midware tutorials &raquo; Couch Arrays**](https://github.com/trendoman/Midware/tree/main/tutorials/Arrays)
+* [**Midware Core Concepts &raquo; Couch Arrays**](https://github.com/trendoman/Midware/tree/main/concepts/Arrays)
 
 ## Installation
 

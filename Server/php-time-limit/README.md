@@ -6,7 +6,8 @@ Override maximum time for executing a PHP script.
 <cms:call 'php-time-limit' '600' />
 <cms:call 'php-time-limit' '0' />
 ```
-Timeout in seconds.
+
+Timeout counted in seconds.
 
 ## Parameters
 

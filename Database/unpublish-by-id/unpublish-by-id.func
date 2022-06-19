@@ -11,7 +11,7 @@
    You should have downloaded this function from https://github.com/trendoman/Cms-Fu
    Donate and help keep functions updated!
    Support requests: tony.smirnov@gmail.com "Antony"
-   </cms:ignore>
+   </cms:ignore><cms:capture into='rs'>
    <cms:if "<cms:validate "<cms:trim id />" validator='non_zero_integer' />">
       <cms:php>
          global $DB;
@@ -20,4 +20,5 @@
          echo $rs;
       </cms:php>
    </cms:if>
+   </cms:capture><cms:trim rs />
 </cms:func>

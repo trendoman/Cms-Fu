@@ -5,6 +5,7 @@ Fetch users with a certain access level.
 ```xml
 <cms:call 'get-users' '10' />
 ```
+
 Result &mdash;
 
 ```js
