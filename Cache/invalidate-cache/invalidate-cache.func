@@ -1,0 +1,14 @@
+<cms:func 'invalidate-cache' ><cms:ignore>
+   ---
+   Invalidates cache
+   Example -
+
+      <cms:call 'invalidate-cache' />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>global $FUNCS; $FUNCS->invalidate_cache();</cms:php>
+</cms:func>

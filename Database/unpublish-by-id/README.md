@@ -10,6 +10,8 @@ Function will return *1* upon success or *0* if page was not found.
 
 Input value is validated then sanitized by Couch before processing.
 
+Func does the job with only 1 query to database.
+
 ## Parameters
 
 * id – non-negative integer (*1*, *2*, etc...)
@@ -32,6 +34,18 @@ In a condition –
 
 ```xml
 <cms:if "<cms:call 'unpublish-by-id' k_page_id />"><cms:else />Page not found!</cms:if>
+```
+
+Function will not invalidate complete cache by itself (tag 'cms:db_persist' does that). Use additional funcs, e.g.
+
+```xml
+<cms:if "<cms:call 'unpublish-by-id' k_page_id />"><cms:call 'uncache-by-pagelink' k_page_link /><cms:else />Page not found!</cms:if>
+```
+
+– or bust full cache with
+
+```xml
+<cms:call 'invalidate-cache' />
 ```
 
 ## Related tags
