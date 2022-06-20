@@ -2,6 +2,8 @@
 
 *Latest on top*
 
+* ##[**Database &raquo; unpublish-by-name**](Database/unpublish-by-name)
+   Unpublish a page if supplied with a name and masterpage.
 * ## [Cache &raquo; uncache-by-pagelink](Cache/uncache-by-pagelink)
    Removes cache file from disk given page's URL.
 * ## [Cache &raquo; invalidate-cache](Cache/invalidate-cache)

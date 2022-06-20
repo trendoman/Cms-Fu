@@ -1,0 +1,26 @@
+<cms:func 'unpublish-by-name' masterpage='' name='' ><cms:ignore>
+   ---
+   Unpublish a given page
+   Example -
+
+      <cms:call 'unpublish-by-name' 'blog.php' 'my-page'/>
+      <cms:call 'unpublish-by-name' name='my-page'/>
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore><cms:set rs='' scope='local'/><cms:hide>
+   <cms:capture into='rs' scope='parent'>
+      <cms:if "<cms:page_exists name=name masterpage=masterpage />">
+         <cms:pages masterpage=masterpage page_name=name limit='1' show_future_entries='1' skip_custom_fields='1'>
+            <cms:db_persist _mode='edit' _masterpage=k_template_name _page_id=k_page_id k_publish_date = '0000-00-00 00:00:00'>
+               <cms:get 'k_success' default='0' />
+            </cms:db_persist>
+         <cms:no_results>1</cms:no_results>
+         </cms:pages>
+      <cms:else />0
+      </cms:if>
+   </cms:capture>
+   </cms:hide><cms:trim rs />
+</cms:func>

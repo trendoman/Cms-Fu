@@ -6,7 +6,7 @@ Function invalidates Couch cache.
 <cms:call 'invalidate-cache' />
 ```
 
-Visit [**Midware concepts &raquo; Caching Pages**](#related-pages) to read about how Couch cache works. In essence, to invalidate cache, Couch creates a fresh file –
+Visit [**Midware Core Concepts &raquo; Caching Pages**](#related-pages) to read about how Couch cache works. In essence, to invalidate cache, Couch creates a fresh file –
 
 `couch/cache/cache_invalidate.dat`
 

@@ -48,6 +48,10 @@ Function will not invalidate complete cache by itself (tag 'cms:db_persist' does
 <cms:call 'invalidate-cache' />
 ```
 
+## Related funcs
+
+* [**Database &raquo; unpublish-by-name**](/Database/unpublish-by-name)
+
 ## Related tags
 
 * **db_persist**
