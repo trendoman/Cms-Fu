@@ -2,8 +2,12 @@
 
 *Latest on top*
 
+* ## [Cache &raquo; uncache-by-pagelink](Cache/uncache-by-pagelink)
+   Removes cache file from disk given page's URL.
+* ## [Cache &raquo; invalidate-cache](Cache/invalidate-cache)
+   Invalidates Couch cache.
 * ## [Database &raquo; unpublish-by-id](Database/unpublish-by-id)
-   Unpublish a page if supplied with id of page.
+   Unpublish a page if supplied with id of page in 1 query.
 * ## [Routines &raquo; create-pages](Routines/tutorials/create-pages) ○ Tutorial
    Create cloned pages in batches
 * ## [DateTime &raquo; clock](DateTime/clock)
