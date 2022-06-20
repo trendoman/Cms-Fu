@@ -1,0 +1,19 @@
+<cms:func 'uncache-by-pagelink' link=k_page_link ><cms:ignore>
+   ---
+   Removes cache file from disk given page's URL.
+   Example -
+
+      <cms:call 'uncache-by-pagelink' k_template_link />
+
+   No return.
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>
+      global $CTX;
+      $cached_page = K_COUCH_DIR . 'cache/' . md5( $CTX->get('link') ) . '.dat';
+      if( file_exists($cached_page) ) @unlink( $cached_page );
+   </cms:php>
+</cms:func>
