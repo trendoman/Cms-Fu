@@ -13,6 +13,7 @@ Format of time is **H:i:s** with optional milliseconds.
 ## Parameters
 
 * __memo__ — a message that will be stored alongside current time.
+* __show__ — will print **clock** as json
 
 ## Usage
 
@@ -37,7 +38,7 @@ Print the result to review where the bottleneck is —
 <cms:show_json clock />
 ```
 
-Or, if you are unsure whether tag **show_json** is available, use tag **show** with parameter **as_json** &mdash;
+Or, if you are unsure whether tag [**show_json**](#related-tags) is available, use tag **show** with parameter **as_json** &mdash;
 
 ```xml
 <cms:if "<cms:tag_exists 'show_json' />">
@@ -45,6 +46,12 @@ Or, if you are unsure whether tag **show_json** is available, use tag **show** w
 <cms:else />
   <cms:show clock as_json='1' />
 </cms:if>
+```
+
+If parameter **show** is passed to the function, the code above will be executed automatically —
+
+```xml
+<cms:call 'clock' 'Tag :pages end' '1' />
 ```
 
 ### result
