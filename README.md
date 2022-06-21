@@ -7,7 +7,7 @@
 
 ## Contents
 
-Look inside
+Please visit [**CHANGELOG**](/CHANGELOG.md) and explore directories in repository.
 
 ## Installation
 

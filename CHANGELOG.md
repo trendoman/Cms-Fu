@@ -2,7 +2,9 @@
 
 *Latest on top*
 
-* ##[**Database &raquo; unpublish-by-name**](Database/unpublish-by-name)
+* ## [**Database &raquo; optimize-pages**](Database/optimize-pages)
+   Single call to load optimized parameters for 'cms:pages' tag.
+* ## [**Database &raquo; unpublish-by-name**](Database/unpublish-by-name)
    Unpublish a page if supplied with a name and masterpage.
 * ## [Cache &raquo; uncache-by-pagelink](Cache/uncache-by-pagelink)
    Removes cache file from disk given page's URL.

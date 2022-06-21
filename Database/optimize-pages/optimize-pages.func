@@ -1,0 +1,51 @@
+<cms:func 'optimize-pages' ><cms:ignore>
+   ---
+   Use 'performance' profile for 'cms:pages' by default
+   Example -
+
+     <cms:pages masterpage='' token="<cms:call 'optimize-pages' />" />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:set token = "<cms:random_name />" scope='global' />
+   <cms:php>
+      global $FUNCS;
+      $FUNCS->add_event_listener( "alter_page_tag_params", function(
+         &$attr, $params, $node, &$mode ){
+            if( $attr['token'] != '<cms:show token />'  )  return;
+
+            $attr['show_future_entries'] = '1';
+            $attr['stop_before'] = date('Y-m-d H:i:s', ceil(time()/(15*60))*15*60 );/* HH:00:00,HH:15:00,HH:30:00,HH:45:00*/
+            if( $attr['paginate']!='1' ) $attr['limit'] = '1000000';
+            $attr['skip_custom_fields'] = '1';
+            $attr['show_unpublished'] = '1';
+
+            foreach( $params as $p ){
+               if( $p['lhs'] == 'show_future_entries' && $p['rhs'] == '1') $attr['stop_before'] = '';
+               if( $p['lhs'] == 'stop_before' ) $attr['stop_before'] = $p['rhs'];
+               if( $p['lhs'] == 'skip_custom_fields' ) $attr['skip_custom_fields'] = $p['rhs'];
+               if( $p['lhs'] == 'show_unpublished' ) $attr['show_unpublished'] = $p['rhs'];
+               if( $p['lhs'] == 'limit' ) $attr['limit'] = $p['rhs'];
+            }
+      });
+      $FUNCS->add_event_listener( "alter_page_tag_query_ex", function(
+            &$dis, &$cqf, &$cqfas, &$qflds, &$qtbl, &$orig_sql,
+            &$sql, &$gby, &$hv, &$osql, &$lsql, &$md,
+            $params, $node, $rec_tpl, $token ){
+               if( $node->name == 'pages' && $token == '<cms:show token />' ){
+                  $override_skip_drafts = 1;
+                  foreach( $params as $p ){
+                     if( $p['lhs'] == 'skip_drafts' ){
+                        $override_skip_drafts = ( $p['rhs'] == '1' ) ? 0 : 1;
+                        break(1);
+                     }
+                  }
+                  if( $override_skip_drafts )
+                  $sql = str_replace( 'AND p.parent_id=0', '', $sql);
+               }
+      }, 0);
+   </cms:php><cms:show token />
+</cms:func>
