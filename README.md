@@ -1,9 +1,8 @@
 # [Cms-Fu](https://github.com/trendoman/Cms-Fu)
 
- The indomitable set of **cms:func** functions for CouchCMS
+ The indomitable set of **'cms:func'** functions for CouchCMS
 
-> First time? Visit CouchCMS [website](https://www.couchcms.com/) to enjoy this TIME-TESTED AND SECURE CMS.<br>
-> It's perfect for designers and is open source! See its GitHub [repo](https://github.com/CouchCMS/CouchCMS).
+> First time? Visit [**CouchCMS &raquo; website**](http://couchcms.com/) to explore this TIME-TESTED and SECURE CMS. It's perfect for designers and is open source! See the [**CouchCMS &raquo; GitHub**](https://github.com/CouchCMS/CouchCMS) repository.
 
 ## Contents
 
