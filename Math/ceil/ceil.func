@@ -1,0 +1,14 @@
+<cms:func 'ceil' val=''><cms:ignore>
+   ---
+   Get the next highest integer
+   Example -
+
+      <cms:call 'ceil' '4.5' />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>global $CTX; echo ceil( $CTX->get('val') );</cms:php>
+</cms:func>

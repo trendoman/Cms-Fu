@@ -105,6 +105,7 @@ Function itself does not take any parameters.
 ## Related tags
 
 * **pages**
+* **get_field**
 
 ## Installation
 

@@ -2,6 +2,8 @@
 
 *Latest on top*
 
+* ## [**Math &raquo; ceil**](Math/ceil)
+   Round up the value.
 * ## [**Database &raquo; optimize-pages**](Database/optimize-pages)
    Single call to load optimized parameters for 'cms:pages' tag.
 * ## [**Database &raquo; unpublish-by-name**](Database/unpublish-by-name)
