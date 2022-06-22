@@ -9,6 +9,12 @@ Override maximum time for executing a PHP script.
 
 Timeout counted in seconds.
 
+Function has an alias –
+
+```xml
+<cms:call 'php' />
+```
+
 ## Parameters
 
 * timeout &mdash; `0` is unlimited timeout, otherwise counted in seconds. Default is `120`.

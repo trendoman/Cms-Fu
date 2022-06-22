@@ -29,8 +29,8 @@ Function has an alias –
 
 ## Parameters
 
-* only_couch – default value is *0*
-* skip_system – default value is *1*
+* **only_couch** – default value is *0*
+* **skip_system** – default value is *1*
 
 ### only_couch
 

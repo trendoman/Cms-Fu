@@ -1,49 +1,53 @@
 <cms:func 'get-users' access_level='7' limit='/* not now */' offset='/* not now */' ><cms:ignore>
-    ---
-    Fetch user list by 'access_level'
-    Example -
+   ---
+   Fetch user list by 'access_level'
+   Example -
 
-        <cms:call 'get-users' '10'/>
+     <cms:call 'get-users' '10'/>
 
-    Result -
+   Result -
 
-    ---
-    You should have downloaded this function from https://github.com/trendoman/Cms-Fu
-    Donate and help keep functions updated!
-    Support requests: tony.smirnov@gmail.com "Antony"
-    </cms:ignore>
-    <cms:func _into='exec' access_level='' sql='' >
-        <cms:set myusers = '[]' is_json='1' scope='local'/>
-        <cms:query sql=sql >
-            <cms:capture into='myusers.' is_json='1' scope='parent' >
-                <cms:if "<cms:func_exists 'create-object' />">
-                    <cms:call 'create-object' k_page_name=k_page_name k_page_title=k_page_title extended_user_email=extended_user_email extended_user_id=extended_user_id />
-                <cms:else />
-                {
-                      "k_page_name" : <cms:escape_json ><cms:show k_page_name/></cms:escape_json>
-                    , "k_page_title" : <cms:escape_json ><cms:show k_page_title/></cms:escape_json>
-                    , "extended_user_email" : <cms:escape_json ><cms:show extended_user_email/></cms:escape_json>
-                    , "extended_user_id" : <cms:escape_json ><cms:show extended_user_id/></cms:escape_json>
-                }
-                </cms:if>
-            </cms:capture>
-        </cms:query>
-        <cms:show myusers as_json='1' />
-    </cms:func>
-    <cms:set sql='' />
-    <cms:capture into='sql' scope='parent'>
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:func _into='exec' access_level='' sql='' >
+     <cms:set myusers = '[]' is_json='1' scope='local'/>
+     <cms:query sql=sql >
+         <cms:capture into='myusers.' is_json='1' scope='parent' >
+             <cms:if "<cms:func_exists 'create-object' />">
+                 <cms:call 'create-object' k_page_name=k_page_name k_page_title=k_page_title extended_user_email=extended_user_email extended_user_id=extended_user_id />
+             <cms:else />
+             {
+                   "k_page_name" : <cms:escape_json ><cms:show k_page_name/></cms:escape_json>
+                 , "k_page_title" : <cms:escape_json ><cms:show k_page_title/></cms:escape_json>
+                 , "extended_user_email" : <cms:escape_json ><cms:show extended_user_email/></cms:escape_json>
+                 , "extended_user_id" : <cms:escape_json ><cms:show extended_user_id/></cms:escape_json>
+             }
+             </cms:if>
+         </cms:capture>
+     </cms:query>
+     <cms:show myusers as_json='1' />
+   </cms:func>
+   <cms:set sql='' />
+   <cms:capture into='sql' scope='parent'>
+      SELECT
+      /*___SQLDBODY___'<cms:show k_func />':*/
 
-    SELECT
-            name  AS `k_page_name`
-        ,   title AS `k_page_title`
-        ,   email AS `extended_user_email`
-        ,   id AS `extended_user_id`
-    FROM
-        <cms:php>echo K_TBL_USERS;</cms:php>
-    WHERE
-        access_level = <cms:show access_level />
-    </cms:capture>
-    <cms:if "<cms:validate access_level validator='non_negative_integer' />">
-        <cms:call exec access_level sql />
-    </cms:if>
+      name  AS `k_page_name`
+      ,   title AS `k_page_title`
+      ,   email AS `extended_user_email`
+      ,   id AS `extended_user_id`
+
+      FROM  <cms:php>echo K_TBL_USERS;</cms:php>
+
+      WHERE access_level = <cms:show access_level />
+
+
+      /*___END_________________*/
+   </cms:capture>
+   <cms:if "<cms:validate access_level validator='non_negative_integer' />">
+      <cms:call exec access_level sql />
+   </cms:if>
 </cms:func>

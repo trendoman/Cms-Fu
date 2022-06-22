@@ -63,6 +63,12 @@ If parameter **show** is passed to the function, the code above will be executed
 }
 ```
 
+## Variables
+
+* **clock**
+
+Set in global scope, this variable keeps all timers and memos.
+
 ## Requirements
 
 ### optional
