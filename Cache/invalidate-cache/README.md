@@ -23,7 +23,7 @@ Function does not take any parameter.
 Unpublishing pages in batch (i.e. old blog posts dated before the beginning of this year) might need cache invalidated after the operation is complete e.g.
 
 ```xml
-<cms:pages masterpage='old-blog.php' stop_before="<cms:date 'last day of last year' />" skip_custom_fields='1'>
+<cms:pages masterpage='old-blog.php' stop_before="<cms:date 'last day of december last year' />" skip_custom_fields='1'>
    <cms:call 'unpublish-by-id' id=k_page_id />
    <cms:if k_paginated_bottom>
       <cms:call 'invalidate-cache' />
@@ -34,7 +34,7 @@ Unpublishing pages in batch (i.e. old blog posts dated before the beginning of t
 Code above is optimized for performance plus minimizes file operations. If only a handful of pages were to be processed tag 'cms:db_persist' would suffice e.g.
 
 ```xml
-<cms:pages masterpage='old-blog.php' stop_before="<cms:date 'last day of last year' />" skip_custom_fields='1'>
+<cms:pages masterpage='old-blog.php' stop_before="<cms:date 'last day of december last year' />" skip_custom_fields='1'>
    <cms:db_persist _mode='edit' _masterpage=k_template_name _page_id=k_page_id _invalidate_cache='1' />
 </cms:pages>
 ```

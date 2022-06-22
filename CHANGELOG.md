@@ -2,6 +2,8 @@
 
 *Latest on top*
 
+* ## [**Database &raquo; database-name**](Database/database-name)
+   Print name of the database.
 * ## [**Math &raquo; ceil**](Math/ceil)
    Round up the value.
 * ## [**Database &raquo; optimize-pages**](Database/optimize-pages)

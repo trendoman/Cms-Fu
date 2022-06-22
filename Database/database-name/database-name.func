@@ -1,0 +1,25 @@
+<cms:func 'database-name'><cms:ignore>
+   ---
+   Fetch user list by 'access_level'
+   Example -
+
+     <cms:call 'database-name' />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>echo K_DB_NAME;</cms:php>
+</cms:func>
+
+<cms:func 'db-name'><cms:ignore>
+   ---
+   Alias to 'database-name'
+   Example -
+
+     <cms:call 'db-name' />
+
+   ---
+    </cms:ignore><cms:call 'database-name' />
+</cms:func>
