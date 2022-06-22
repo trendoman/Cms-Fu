@@ -1,0 +1,42 @@
+<cms:func 'database-names' only_couch='0' skip_system='1'><cms:ignore>
+   ---
+   List server's databases in JSON.
+   Example -
+
+     <cms:call 'database-names' />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:capture into='sql'>
+      SELECT
+      /*___SQLDBODY___'<cms:show k_func />':*/
+
+      JSON_OBJECT('name', t.TABLE_SCHEMA, 'is_couchcms', (t.TABLE_NAME LIKE '%couch%')) AS `database`
+      , t.TABLE_SCHEMA AS `name`
+      , (t.TABLE_NAME LIKE '%couch%') AS `is_couchcms`
+      FROM INFORMATION_SCHEMA.TABLES t
+      GROUP BY t.TABLE_SCHEMA
+
+      /*___END_________________*/
+   </cms:capture>
+   <cms:set _cached_databases = "<cms:get '_cached_databases' default='[]' scope='global' as_json='1' />" is_json='1' scope='global'/>
+   <cms:set result='[]' is_json='1' />
+   <cms:if "<cms:not "<cms:arr_count _cached_databases />" />">
+      <cms:query sql=sql>
+         <cms:put "_cached_databases.<cms:show name />" value=database is_json='1' scope='parent'/>
+      </cms:query>
+   </cms:if>
+   <cms:each _cached_databases key='name' as='object'>
+      <cms:if skip_system && ( name eq 'information_schema' || name eq 'mysql' || name eq 'performance_schema' || name eq 'sys' )>
+      <cms:else />
+         <cms:if only_couch && "<cms:not object.is_couchcms />" >
+         <cms:else />
+            <cms:put "result.<cms:show name />" value=object is_json='1' scope='parent'/>
+         </cms:if>
+      </cms:if>
+   </cms:each>
+   <cms:show result as_json='1' />
+</cms:func>
