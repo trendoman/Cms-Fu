@@ -21,6 +21,12 @@ Example above shows 2 databases, one of which holds tables for CouchCMS, followi
 <cms:call 'database-names' />
 ```
 
+Function has an alias –
+
+```xml
+<cms:call 'db-names' />
+```
+
 ## Parameters
 
 * only_couch – default value is *0*

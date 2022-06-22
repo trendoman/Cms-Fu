@@ -28,6 +28,10 @@ or, if you has access to the variable [**k__defined**](#related-pages), then it 
 
 None.
 
+## Related funcs
+
+* [**Database » database-names**](https://github.com/trendoman/Cms-Fu/tree/master/Database/database-names)
+
 ## Related pages
 
 * [**Tweakus-Dilectus Variables &raquo; k__defined**](https://github.com/trendoman/Tweakus-Dilectus/tree/main/anton.cms%40ya.ru__variables-new/k__defined)
