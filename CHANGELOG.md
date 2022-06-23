@@ -2,6 +2,8 @@
 
 *Latest on top*
 
+* ## [**Money &raquo; inr-format**](Money/inr-format)
+   Applies the **Indian Rupee** format to numbers.
 * ## [**Database &raquo; database-names**](Database/database-names)
    Print all available on server databases, flagged as Couch-related or not.
 * ## [**Database &raquo; database-name**](Database/database-name)

@@ -1,0 +1,22 @@
+<cms:func 'inr-format' val=''><cms:ignore>
+   ---
+   Money format for Indian Rupee
+   Example -
+
+      <cms:call 'inr-format' '123456789' />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>
+      global $CTX;
+      $val = str_replace( array(',', ' '), '', $CTX->get('val'));
+      $CTX->set('val', $val, 'parent');
+   </cms:php>
+   <cms:set val = "<cms:number_format number=val decimal_character='.' thousands_separator='' decimal_precision='2' />" />
+   <cms:php>
+      echo '₹ ', $num = preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", '<cms:show val />');
+   </cms:php>
+</cms:func>
