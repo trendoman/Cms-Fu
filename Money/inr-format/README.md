@@ -47,6 +47,7 @@ and
 ## Related pages
 
 * [**Tips&Tricks » number_format**](https://www.couchcms.com/forum/viewtopic.php?f=8&t=11423#p34927) — a modded version of **cms:number_format** on CouchCMS forum.
+* [**Feature Requests » Place Value Systems**](https://www.couchcms.com/forum/viewtopic.php?f=3&t=13250) — a forum request about money formatting by **@genxcoders**.
 
 ## Installation
 
