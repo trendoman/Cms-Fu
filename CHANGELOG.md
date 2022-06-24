@@ -2,6 +2,8 @@
 
 *Latest on top*
 
+* ## [**DateTime &raquo; date-to-english-words**](DateTime/date-to-english-words)
+   Convert a date to words in English.
 * ## [**Money &raquo; inr-format**](Money/inr-format)
    Applies the **Indian Rupee** format to numbers.
 * ## [**Database &raquo; database-names**](Database/database-names)

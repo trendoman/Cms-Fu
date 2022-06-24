@@ -1,0 +1,116 @@
+<cms:func 'date-to-english-words' date="<cms:date format='Y-m-d' />" print_func=''><cms:ignore>
+   ---
+   Convert date to words.
+
+   Example -
+
+     <cms:call 'date-to-english-words' />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:set words_days = '[ "Zeroth",
+
+      "First", "Second", "Third", "Fourth", "Fifth",
+
+      "Sixth", "Seventh", "Eighth", "Ninth", "Tenth",
+
+      "Eleventh", "Twelfth", "Thirteenth", "Fourteenth", "Fifteenth",
+
+      "Sixteenth", "Seventeenth", "Eighteenth", "Nineteenth", "Twentieth",
+
+      "Twenty-first", "Twenty-second", "Twenty-third", "Twenty-fourth", "Twenty-fifth",
+
+      "Twenty-sixth", "Twenty-seventh", "Twenty-eighth", "Twenty-ninth",
+
+      "Thirtieth", "Thirty-first" ]' is_json='1' />
+
+   <cms:set words_months = '[ "Zerotember",
+
+      "January", "February", "March", "April", "May", "June",
+
+      "July", "August", "September", "October", "November", "December" ]' is_json='1' />
+
+   <cms:set words_thou = '{
+
+      "19":"Nineteen Hundred",
+
+      "20":"Two Thousand",
+
+      "21":"Two Thousand One Hundred" }' is_json='1' />
+
+   <cms:set words_0_to_19 = '[ "Zero",
+
+      "One", "Two", "Three", "Four", "Five",
+
+      "Six", "Seven", "Eight", "Nine", "Ten",
+
+      "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen",
+
+      "Sixteen", "Seventeen", "Eighteen", "Nineteen"
+
+   ]' is_json='1' />
+
+   <cms:set words_tens_10_to_90 = '{ "10": "Ten",
+
+      "20": "Twenty", "30": "Thirty", "40": "Fourty", "50": "Fifty",
+
+      "60": "Sixty", "70": "Seventy", "80": "Eighty", "90": "Ninety"
+
+   }' is_json='1' />
+
+   <cms:set tens_ones = '[]' is_json='1' />
+   <cms:each words_0_to_19>
+      <cms:set tens_ones. = item scope='parent' />
+   </cms:each>
+
+   <cms:each words_tens_10_to_90 key='num' as='tens'>
+      <cms:if k_first_item><cms:continue /></cms:if>
+      <cms:set tens_ones. = tens scope='parent' />
+
+      <cms:each words_0_to_19 as='ones'>
+         <cms:if k_first_item><cms:continue /></cms:if>
+         <cms:if k_count gt '9'><cms:break /></cms:if>
+
+         <cms:set tens_ones. = "<cms:concat tens ' ' ones />" scope='parent' />
+      </cms:each>
+   </cms:each>
+
+   <cms:set convert_date_day = "<cms:date date format='j' />" />
+   <cms:set word_convert_date_day = "<cms:get "words_days.<cms:show convert_date_day />" />" scope='parent' />
+
+   <cms:set convert_date_month = "<cms:date date format='n' />" />
+   <cms:set word_convert_date_month = "<cms:get "words_months.<cms:show convert_date_month />" />" />
+
+   <cms:capture into='year_numbers' is_json='1'>
+      <cms:php>global $FUNCS; echo $FUNCS->json_encode(str_split('<cms:date date format='Y' />', 2));</cms:php>
+   </cms:capture>
+   <cms:set year_numbers.1 = "<cms:php>echo ltrim('<cms:show year_numbers.1 />', '0');</cms:php>" />
+
+   <cms:set thou_hund = "<cms:get "words_thou.<cms:show year_numbers.0 />" />" />
+   <cms:set final_num = "<cms:get "tens_ones.<cms:show year_numbers.1 />" />" />
+   <cms:if final_num eq tens_ones.0 ><cms:set final_num = '' /></cms:if>
+
+   <cms:capture into='result' is_json='1'>{
+      "day":<cms:escape_json><cms:show word_convert_date_day /></cms:escape_json>,
+      "month":<cms:escape_json><cms:show word_convert_date_month /></cms:escape_json>,
+      "year_hi":<cms:escape_json><cms:show thou_hund /></cms:escape_json>,
+      "year_lo":<cms:escape_json><cms:show final_num /></cms:escape_json>,
+      "day_num":<cms:escape_json><cms:show convert_date_day /></cms:escape_json>,
+      "month_num":<cms:escape_json><cms:show convert_date_month /></cms:escape_json>,
+      "year_hi_num":<cms:escape_json><cms:show year_numbers.0 /></cms:escape_json>,
+      "year_lo_num":<cms:escape_json><cms:show year_numbers.1 /></cms:escape_json>
+   }
+   </cms:capture>
+   <cms:show_json result />
+   <cms:if "<cms:func_exists print_func />">
+      <cms:call print_func result />
+   <cms:else />
+      <cms:concat
+         day=result.day sep=' of ' month=result.month sep=', '
+         year1=result.year_hi sep="<cms:if result.year_lo> and</cms:if>" year2=result.year_lo
+      />
+   </cms:if>
+</cms:func>
