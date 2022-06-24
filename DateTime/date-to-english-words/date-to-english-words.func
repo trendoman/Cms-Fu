@@ -87,7 +87,7 @@
    <cms:capture into='year_numbers' is_json='1'>
       <cms:php>global $FUNCS; echo $FUNCS->json_encode(str_split('<cms:date date format='Y' />', 2));</cms:php>
    </cms:capture>
-   <cms:set year_numbers.1 = "<cms:php>echo ltrim('<cms:show year_numbers.1 />', '0');</cms:php>" />
+   <cms:set year_numbers.1 = "<cms:php>echo ltrim('<cms:show year_numbers.1 />', '0');</cms:php>" scope='parent'/>
 
    <cms:set thou_hund = "<cms:get "words_thou.<cms:show year_numbers.0 />" />" />
    <cms:set final_num = "<cms:get "tens_ones.<cms:show year_numbers.1 />" />" />
@@ -104,13 +104,9 @@
       "year_lo_num":<cms:escape_json><cms:show year_numbers.1 /></cms:escape_json>
    }
    </cms:capture>
-   <cms:show_json result />
    <cms:if "<cms:func_exists print_func />">
       <cms:call print_func result />
    <cms:else />
-      <cms:concat
-         day=result.day sep=' of ' month=result.month sep=', '
-         year1=result.year_hi sep="<cms:if result.year_lo> and</cms:if>" year2=result.year_lo
-      />
+      <cms:show result.day /> of <cms:show result.month />, <cms:show result.year_hi /><cms:if result.year_lo> and <cms:show result.year_lo /></cms:if>
    </cms:if>
 </cms:func>
