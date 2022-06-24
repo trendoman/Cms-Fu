@@ -118,7 +118,9 @@ Function **date-to-english-words** sends a JSON object that contains word- & num
 
 – so that you can construct any kind of custom output.
 
-Take a look at docs on [**cms:func**](#related-tags) to see more examples of *callbacks*, such as above.
+If the output needs to be changed to **lowercase, UPPERCASE, Titlecase** – look at [**modded cms:show**](#related-tags) tag.
+
+Also visit docs on [**cms:func**](#related-tags) to see more examples of *callbacks*, such as above.
 
 ## Other languages
 
@@ -137,6 +139,7 @@ Create a copy of the function, edit the func's name and its content by writing-i
 * [**Midware Tags Reference &raquo; date**](https://github.com/trendoman/Midware/tree/main/tags-reference/date.md)
 * [**Midware Tags Reference &raquo; call**](https://github.com/trendoman/Midware/tree/main/tags-reference/call.md)
 * [**Midware Tags Reference &raquo; func**](https://github.com/trendoman/Midware/tree/main/tags-reference/func.md)
+* [**Tweakus-Dilectus Modded Tags &raquo; show**](https://github.com/trendoman/Tweakus-Dilectus/tree/main/anton.cms%40ya.ru__tags-modded/show)
 
 ## Installation
 
