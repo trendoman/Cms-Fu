@@ -14,7 +14,7 @@ Output of the call above –
 
 * **val**
 
-Can have a `+` or `-` sign and decimal part, but every other non-digit symbol will be removed, including spaces.
+   Can have a `+` or `-` sign and decimal part, but every other non-digit symbol will be removed, including spaces.
 
 ## Example
 
@@ -22,7 +22,6 @@ Automatically fixes following problematic input values —
 
 * spaces or commas are removed
 * any other non-digit symbol is also removed (signs are kept only if placed first)
-*
 
 ```xml
 <pre>
