@@ -8,45 +8,95 @@ Function applies **Indian Rupee** formatting to the number.
 
 Output of the call above –
 
-`₹ 1,12,34,56,789.00`
-
-Currency symbol is added before the number.
-
----
-
-**NOTE:** Function **inr-format** piggybacks on [**cms:number_format**](#related-tags) tag. If you have it modded (i.e. tweaked rounding of decimals), it will be respected.
+`1,12,34,56,789`
 
 ## Parameters
 
 * **val**
 
-Must *not* contain currency symbol. Please use only a number.
+Can have a `+` or `-` sign and decimal part, but every other non-digit symbol will be removed, including spaces.
 
 ## Example
 
-Automatically fix spaced or comma-separated numbers e.g.
+Automatically fixes following problematic input values —
+
+* spaces or commas are removed
+* any other non-digit symbol is also removed (signs are kept only if placed first)
+*
 
 ```xml
-<cms:call 'inr-format' '1 123 456 789' />
-
-<cms:call 'inr-format' '456,789.00' />
+<pre>
+<br><cms:call 'inr-format' '1 123 456 789' />
+<br><cms:call 'inr-format' '456,789.00' />
+<br><cms:call 'inr-format' '45789.--' />
+<br><cms:call 'inr-format' '4579.' />
+<br><cms:call 'inr-format' '456' />
+<br><cms:call 'inr-format' '46' />
+</pre>
 ```
 
-– outputs
+— prints
 
-`₹ 1,12,34,56,789.00`
+```
+1,12,34,56,789
+4,56,789.00
+45,789
+4,579
+456
+46
+```
 
-and
+With more complicated cases –
 
-`₹ 4,56,789.00`
+```xml
+<pre>
+<br><cms:call 'inr-format' '046' />
+<br><cms:call 'inr-format' '.46' />
+<br><cms:call 'inr-format' '00.46' />
+<br><cms:call 'inr-format' '00.468' />
+<br><cms:call 'inr-format' '1234.4689' />
+<br><cms:call 'inr-format' '+1689' />
+<br><cms:call 'inr-format' '--1689.001' />
+<br><cms:call 'inr-format' '₹ +1689.00' />
+<br><cms:call 'inr-format' '1/68/899.25' />
+<br><cms:call 'inr-format' '1.68.899.25' />
+</pre>
+```
+
+– the result is
+
+```
+46
+0.46
+0.46
+0.468
+1,234.4689
++1,689
+-1,689.001
++1,689.00
+1,68,899.25
+1.68
+```
+
+### number_format
+
+Pre-format numbers with [**cms:number_format**](#related-tags) if decimal part needs some work (including rounding or trimming) e.g.
+
+```xml
+<cms:call 'inr-format' val="<cms:number_format '1234567890' decimal_precision='4' />" />
+```
+
+result is
+
+`1,23,45,67,890.0000`
 
 ## Related tags
 
 * [**Documentation &raquo; number_format**](https://docs.couchcms.com/tags-reference/number_format.html)
+* [**Tips&Tricks » number_format**](https://www.couchcms.com/forum/viewtopic.php?f=8&t=11423#p34927) — a modded version of **cms:number_format** on CouchCMS forum with rounding option.
 
 ## Related pages
 
-* [**Tips&Tricks » number_format**](https://www.couchcms.com/forum/viewtopic.php?f=8&t=11423#p34927) — a modded version of **cms:number_format** on CouchCMS forum.
 * [**Feature Requests » Place Value Systems**](https://www.couchcms.com/forum/viewtopic.php?f=3&t=13250) — a forum request about money formatting by **@genxcoders**.
 
 ## Installation
