@@ -2,6 +2,8 @@
 
 *Latest on top*
 
+* ## [**Sapling &raquo; embed**](Sapling/embed)
+   Embed snippets with parameters and a callback.
 * ## [**DateTime &raquo; date-to-english-words**](DateTime/date-to-english-words)
    Convert a date to words in English.
 * ## [**Money &raquo; inr-format**](Money/inr-format)

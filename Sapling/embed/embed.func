@@ -1,0 +1,21 @@
+<cms:func 'embed' snippet='' udf=''><cms:ignore>
+   ---
+   Embed with a callback and params
+   Example -
+
+      <cms:call 'embed' 'snippet.inc' />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:if "<cms:func_exists udf />">
+      <cms:set result = "<cms:embed snippet/>" />
+      <cms:call udf result />
+   <cms:else />
+      <cms:if "<cms:exists snippet />">
+         <cms:embed snippet/>
+      </cms:if>
+   </cms:if>
+</cms:func>
