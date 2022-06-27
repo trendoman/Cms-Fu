@@ -8,7 +8,9 @@ Function **embed** *embeds* a snippet with parameters and a user-defined *callba
 
 There is an extra check for the presence of the file.
 
-This function is inspired by the [**Sapling**](#related-pages) project.
+---
+
+This function is inspired by the **Sapling**[^1] project.
 
 ## Parameters
 
@@ -178,7 +180,6 @@ Plus an unnamed variable holding content of the snippet is passed to the callbac
 
 ## Related pages
 
-* [**GroveOS » Sapling**](https://github.com/GroveOS/Sapling) — A CouchCMS starter codebase that implements MVC patterns and shell script automation.
 * [**Midware Core Concepts &raquo; Couch Arrays**](https://github.com/trendoman/Midware/tree/main/concepts/Arrays)
 
 ## Installation
@@ -190,3 +191,5 @@ Plus an unnamed variable holding content of the snippet is passed to the callbac
 ## Support
 
 Check out my dedicated [**SUPPORT**](/SUPPORT.md) page.
+
+[^1]: [**GroveOS » Sapling**](https://github.com/GroveOS/Sapling) — A CouchCMS starter codebase that implements MVC patterns and shell script automation.
