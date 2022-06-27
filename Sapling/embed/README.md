@@ -18,7 +18,7 @@ This function is inspired by the [**Sapling**](#related-pages) project.
 
 * **udf**
 
-   Abbreviation stands for **_U_ser-_D_efined _F_unction**. Parameter's value is the name of an udf.
+   Abbreviation stands for __*U*ser-*D*efined&nbsp;*F*unction__. Parameter's value is the name of an udf.
 
 ## Example
 
