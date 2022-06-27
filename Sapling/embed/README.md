@@ -179,6 +179,7 @@ Plus an unnamed variable holding content of the snippet is passed to the callbac
 ## Related pages
 
 * [**GroveOS » Sapling**](https://github.com/GroveOS/Sapling) — A CouchCMS starter codebase that implements MVC patterns and shell script automation.
+* [**Midware Core Concepts &raquo; Couch Arrays**](https://github.com/trendoman/Midware/tree/main/concepts/Arrays)
 
 ## Installation
 
