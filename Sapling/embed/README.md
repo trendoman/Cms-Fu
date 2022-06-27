@@ -12,6 +12,8 @@ There is an extra check for the presence of the file.
 
 This function is inspired by the **Sapling**[^1] project.
 
+[^1]: [**GroveOS » Sapling**](https://github.com/GroveOS/Sapling) — A CouchCMS starter codebase that implements MVC patterns and shell script automation.
+
 ## Parameters
 
 * **snippet**
@@ -191,5 +193,3 @@ Plus an unnamed variable holding content of the snippet is passed to the callbac
 ## Support
 
 Check out my dedicated [**SUPPORT**](/SUPPORT.md) page.
-
-[^1]: [**GroveOS » Sapling**](https://github.com/GroveOS/Sapling) — A CouchCMS starter codebase that implements MVC patterns and shell script automation.
