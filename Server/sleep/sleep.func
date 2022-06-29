@@ -1,4 +1,4 @@
-<cms:func 'sleep' for='3'><cms:ignore>
+<cms:func 'sleep' for='0.1'><cms:ignore>
     ---
     Make server wait. Count in seconds.
     Example -
