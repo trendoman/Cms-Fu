@@ -3,7 +3,7 @@
     Requests content of any URL
     Example -
 
-        <cms:call 'fetch_url' k_page_link />
+        <cms:call 'fetch-url' k_page_link />
 
     ---
     You should have downloaded this function from https://github.com/trendoman/Cms-Fu
@@ -18,7 +18,7 @@
         if( <cms:validate value=url validator='url' /> ){
             $myURL = $CTX->get('url');
         } else {
-            die( "ERROR in func 'fetch-url'. Invalid supplied URL: " . $CTX->get('url') );
+            return( "ERROR in func 'fetch-url'. Invalid supplied URL: " . $CTX->get('url') );
         }
 
         $accept_cookie = ( $CTX->get('accept_cookie') == 1 ) ? 1 : 0;

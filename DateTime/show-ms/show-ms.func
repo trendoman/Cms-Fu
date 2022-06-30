@@ -1,15 +1,15 @@
 <cms:func 'show-ms'><cms:ignore>
-    ---
-    Show milliseconds of current time.
-    Example -
+   ---
+   Show milliseconds of current time.
+   Example -
 
-        <cms:call 'show-ms' />
+     <cms:call 'show-ms' />
 
-    ---
-    You should have downloaded this function from https://github.com/trendoman/Cms-Fu
-    Donate and help keep functions updated!
-    Support requests: tony.smirnov@gmail.com "Antony"
-    </cms:ignore><cms:php>
-        echo $milliseconds = date_create()->format('v');
-    </cms:php>
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore><cms:php>
+      echo $milliseconds = substr(round(microtime(true) * 1000), -3);
+   </cms:php>
 </cms:func>

@@ -1,4 +1,4 @@
-<cms:func 'sleep' for='0.1'><cms:ignore>
+<cms:func 'sleep' for='0.01'><cms:ignore>
     ---
     Make server wait. Count in seconds.
     Example -
@@ -12,6 +12,6 @@
     Support requests: tony.smirnov@gmail.com "Antony"
     </cms:ignore>
     <cms:if "<cms:validate value=for validator='non_zero_decimal' />" >
-        <cms:php>usleep(1000000 * <cms:show for />);</cms:php>
+        <cms:php>usleep(1000*1000*<cms:show for />);</cms:php>
     </cms:if>
 </cms:func>
