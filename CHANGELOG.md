@@ -2,6 +2,8 @@
 
 *Latest on top*
 
+* ## [**Tweakus Dilectus &raquo; Addon "Func-on-demand"**](https://github.com/trendoman/Tweakus-Dilectus/tree/main/anton.cms@ya.ru__func-on-demand)
+   Autoloading of 'func' snippets.
 * ## [**Sapling &raquo; embed**](Sapling/embed)
    Embed snippets with parameters and a callback.
 * ## [**DateTime &raquo; date-to-english-words**](DateTime/date-to-english-words)

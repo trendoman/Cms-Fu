@@ -33,7 +33,7 @@
    <cms:set sql='' />
    <cms:capture into='sql' scope='parent'>
       SELECT
-      /*___SQLDBODY___'<cms:show k_func />':*/
+      /*___SQLBODY___'<cms:show k_func />':*/
 
       name  AS `k_page_name`
       ,   title AS `k_page_title`
