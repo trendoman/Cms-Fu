@@ -10,16 +10,17 @@ Please visit [**CHANGELOG**](/CHANGELOG.md) and explore directories in repositor
 
 ## Installation
 
-1. Clone the repo to your defined in config.php **`snippets`** folder (or default one, `couch/snippets`) and name repo locally as **`func`** &mdash;
+1. Clone the repo (or download [**master.zip**](https://github.com/trendoman/Cms-Fu/archive/refs/heads/master.zip)) to the 'snippets' directory (default is `couch/snippets`). Rename repo locally as **funcs** —
+
    ```shell
    cd /var/www/html/example.com/mysnippets
    ```
    ```shell
    git clone http://github.com/trendoman/Cms-Fu funcs
    ```
-   - or download zip &ndash; [master.zip](https://github.com/trendoman/Cms-Fu/archive/refs/heads/master.zip)
 
-2. Register the desired function via **cms:embed**
+2. Use [**Autoloading**](ADDON-FUNCS-ON-DEMAND.md) or either copy the func's code in the page or **&lt;cms:embed&gt;** the func's file, e.g.
+
    ```xml
    <cms:embed 'funcs/DateTime/clock/clock.func' />
    ```
