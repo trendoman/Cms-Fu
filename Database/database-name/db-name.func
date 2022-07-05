@@ -1,0 +1,10 @@
+<cms:func 'db-name'><cms:ignore>
+   ---
+   Alias to 'database-name'
+   Example -
+
+     <cms:call 'db-name' />
+
+   ---
+    </cms:ignore><cms:call 'database-name' />
+</cms:func>

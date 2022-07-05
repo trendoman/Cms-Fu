@@ -17,15 +17,3 @@
         set_time_limit($t);
     </cms:php>
 </cms:func>
-
-<cms:func 'php' timeout='120'><cms:ignore>
-   ---
-   Alias to 'php-time-limit'
-   Example -
-
-     <cms:call 'php' />
-
-   ---
-    </cms:ignore>
-    <cms:call 'php-time-limit' timeout=timeout />
-</cms:func>

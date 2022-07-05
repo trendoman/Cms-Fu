@@ -1,37 +1,19 @@
-# Support
+## Support, suggestions, requests, feedback
 
-Hello, I'm Anton, a CouchCMS expert / forum moderator and I've been with Couch since *2014*.
+Drop me a line and I'll try to get back
 
-Conversation is free, code is often free too!
+<tony.smirnov@gmail.com>
 
-Paid work is welcomed.
+### telegram
 
-## email
+*Join [**COUCH:TALK**](https://t.me/couchcms_chat) telegram channel* — free no-ads discussion place for our tiny community. It's all about beloved CouchCMS! ☺
 
-Write me at: **tony.smirnov@gmail.com**<br>
-You'll get a *well-informed up-to-date* reply.
+## Donate
 
-☺
+**BTC**: bc1qsl2tulmsjcvpkegepeunmumz599yz0lhuktdjt
 
-## telegram
+Your help goes towards —
 
-I created and maintain Couch-related **telegram channel**: https://t.me/s/couchcms
-
-Ask questions, post comments; read news; promote your work &ndash; it's all about CouchCMS.
-
-## donate
-
-Donate today to help me get through very rough times. Enjoy addons and expect more!
-
-**Bitcoin**: bc1qsl2tulmsjcvpkegepeunmumz599yz0lhuktdjt
-
-Desperately need your help that allows to &ndash;
-- keep up with support requests;
-- continue helping people and receiving your [**thank you's**](https://github.com/trendoman/Dignotas)
-- write new code and improve existing addons
-
-## ask in forum
-
-Many questions have been answered in [**CouchCMS &raquo; forum**](https://www.couchcms.com/forum/).
-
-Additionally browse [**forum &raquo; Tips&Tricks**](https://www.couchcms.com/forum/viewforum.php?f=8) for more funcs, addons and solutions.
+- added and updated [**documentation pages**](https://github.com/trendoman/Midware)
+- more [**functions**](https://github.com/trendoman/Cms-Fu) and [**addons**](https://github.com/trendoman/Tweakus-Dilectus)
+- snacks for my two Canadian Sphynx cats.

@@ -40,15 +40,3 @@
    </cms:each>
    <cms:show result as_json='1' />
 </cms:func>
-
-<cms:func 'db-names' only_couch='0' skip_system='1'><cms:ignore>
-   ---
-   Alias to 'database-names'
-   Example -
-
-     <cms:call 'db-names' />
-
-   ---
-    </cms:ignore>
-    <cms:call 'database-names' only_couch=only_couch skip_system=skip_system />
-</cms:func>

@@ -12,14 +12,3 @@
    </cms:ignore>
    <cms:php>echo K_DB_NAME;</cms:php>
 </cms:func>
-
-<cms:func 'db-name'><cms:ignore>
-   ---
-   Alias to 'database-name'
-   Example -
-
-     <cms:call 'db-name' />
-
-   ---
-    </cms:ignore><cms:call 'database-name' />
-</cms:func>

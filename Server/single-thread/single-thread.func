@@ -1,0 +1,26 @@
+<cms:func 'single-thread' uid='' msg='<h2>Please wait..</h2>'><cms:ignore>
+   ---
+   Parallel script exec is prevented.
+   Example -
+
+     <cms:call 'single-thread' msg='Script is running..' />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>
+      global $DB, $CTX;
+      $uid = $DB->sanitize( $CTX->get('uid') );
+      if( !$uid ) $uid = date('YmdHis', ceil(time()/(15*60))*15*60);
+      $handle = 'lock_single_thread_'.$uid;
+
+      if( !$DB->is_free_lock($handle) ){ die($CTX->get('msg'));}
+      if( !$DB->get_lock($handle) ){ die($CTX->get('msg')); }
+
+      register_shutdown_function(function() use ($DB, $handle) {
+         $DB->release_lock( $handle );
+      });
+   </cms:php>
+</cms:func>

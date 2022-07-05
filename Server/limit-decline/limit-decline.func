@@ -1,26 +1,26 @@
 <cms:func 'limit-decline' limit='1' decline='<h2>Please wait..</h2>'><cms:ignore>
-    ---
-    Restricts visitors above the limit.
-    Example -
+   ---
+   Restricts visitors above the limit.
+   Example -
 
-        <cms:call 'limit-decline' '1' 'Wait..' />
+     <cms:call 'limit-decline' '1' 'Wait..' />
 
-    ---
-    You should have downloaded this function from https://github.com/trendoman/Cms-Fu
-    Donate and help keep functions updated!
-    Support requests: tony.smirnov@gmail.com "Antony"
-    </cms:ignore>
-    <cms:php>
-        global $DB, $CTX;
-        $limit = intval($CTX->get('limit'));
-        if( !filter_var($limit, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1))) ) return;
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>
+      global $DB, $CTX;
+      $limit = intval($CTX->get('limit'));
+      if( !filter_var($limit, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1))) ) return;
 
-        for( $x=$limit; $x>0; $x-- ){
-            if( $DB->is_free_lock('lock_limit_decline_'.$x) ){
-                if( !$DB->get_lock('lock_limit_decline_'.$x) ) die;
-                return;
-            }
-        }
-        die($CTX->get('decline'));
-    </cms:php>
+      for( $x=$limit; $x>0; $x-- ){
+         if( $DB->is_free_lock('lock_limit_decline_'.$x) ){
+             if( !$DB->get_lock('lock_limit_decline_'.$x) ) die;
+             return;
+         }
+      }
+      die($CTX->get('decline'));
+   </cms:php>
 </cms:func>
