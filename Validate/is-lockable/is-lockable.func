@@ -1,0 +1,28 @@
+<cms:func 'is-lockable' uid=''><cms:ignore>
+   ---
+   Tries to obtain lock and return 1 if successful => parallel / simultaneous script exec is prevented.
+   Example -
+
+     <cms:call 'is-lockable' />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>
+      global $DB, $CTX;
+      $uid = $DB->sanitize( $CTX->get('uid') );
+      if( !$uid ) $uid = date('YmdHis', ceil(time()/(15*60))*15*60);
+      $handle = 'lock_is_lockable_'.$uid;
+
+      if( !$DB->is_free_lock($handle) ){ return 0;}
+      if( !$DB->get_lock($handle) ){ return 0;}
+
+      register_shutdown_function(function() use ($DB, $handle) {
+         $DB->release_lock( $handle );
+      });
+      
+      return 1;
+   </cms:php>
+</cms:func>

@@ -2,6 +2,10 @@
 
 *Latest on top*
 
+* ## [Validate &raquo; is-lockable](Validate/is-lockable)
+   Tries to obtain a lock and returns either ***1*** upon success or ***0*** if the lock is in use or can not be set.
+* ## [Server &raquo; single-thread](Server/single-thread)
+   Allows the script to finish before a new one can be started.
 * ## [**Tweakus Dilectus &raquo; Addon "Func-on-demand"**](https://github.com/trendoman/Tweakus-Dilectus/tree/main/anton.cms@ya.ru__func-on-demand)
    Autoloading of 'func' snippets.
 * ## [**Sapling &raquo; embed**](Sapling/embed)
