@@ -2,6 +2,9 @@
 
 *Latest on top*
 
+* ## [Routines &raquo; add-job](Routines/add-job)
+* ## [Routines &raquo; execute-jobs](Routines/execute-jobs)
+* ## [Routines &raquo; task-file-runner](Routines/task-file-runner)
 * ## [Validate &raquo; is-lockable](Validate/is-lockable)
    Tries to obtain a lock and returns either ***1*** upon success or ***0*** if the lock is in use or can not be set.
 * ## [Server &raquo; single-thread](Server/single-thread)

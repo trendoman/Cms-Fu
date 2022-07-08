@@ -1,0 +1,79 @@
+<cms:func 'execute-jobs' itinerary='' ><cms:ignore>
+    ---
+    Since each 'task' is a paginated link, this func does a 'while' loop
+    requesting URIs. Tasks are waiting to work and report paginated link to next task.
+
+    Example -
+
+        <cms:call 'execute-jobs' 'mytodo' />
+
+    ---
+    You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+    Donate and help keep functions updated!
+    Support requests: tony.smirnov@gmail.com "Antony"
+    </cms:ignore>
+    <cms:each itinerary as='job' startcount='1' is_json='1'>
+
+            <cms:set job.time_start = "<cms:date format='H:i:s'/><cms:if "<cms:func_exists 'show-ms' />" > <cms:call 'show-ms' /></cms:if>" />
+            <cms:set allowed='1'/>
+
+            <cms:while allowed >
+
+                    <cms:set job.current_task = job.sequent_task scope='parent' />
+
+                    <cms:capture into='response' is_json='1' trim='1' >
+                        <cms:if "<cms:call 'is-callable' func=job.user.engine_func />" ><cms:call job.user.engine_func job />
+                        <cms:else /><cms:call 'fetch-url' url=job.current_task as_ajax='1' />
+                        </cms:if>
+                    </cms:capture>
+
+                            <cms:if "<cms:is_array response />"><cms:set response.current_task = job.current_task scope='parent' memo="Add current URL to report?"/></cms:if>
+
+                            <cms:if response.success && response.continue && response.sequent_task>
+
+                                <cms:set job.sequent_task = response.sequent_task scope='parent' />
+
+                            <cms:else_if response.success />
+
+                                <cms:set job.is_complete = '1' scope='parent' />
+                                <cms:set allowed='0' memo="<!-- break the loop and start the next job -->"/>
+
+                            <cms:else_if response.error />
+
+                                <cms:set job.error = response.error scope='parent' />
+                                <cms:set allowed='0' memo="<!-- break the loop and start the next job -->"/>
+
+                            <cms:else />
+
+                                <cms:set job.error = 'ERROR: Task code is wrong!' scope='parent' />
+                                <cms:set job.notes. = 'ABORT! Request *unexpectedly* reported no status.' scope='parent' />
+                                <cms:set job.notes. = 'Requested task must return valid JSON with "success" or "error".' scope='parent' />
+                                <cms:set job.notes. = 'Requested task may also have "continue" and "sequent_task".' scope='parent' />
+                                <cms:set job.report. = job.current_task scope='parent' />
+                                <cms:set job.report. = 'REQUEST_FAIL' scope='parent' />
+                                <cms:set allowed='0' memo="<!-- break the loop and start the next job -->"/>
+
+                            </cms:if>
+
+                            <cms:set job.report. = response scope='parent' />
+
+            </cms:while>
+
+            <cms:set job.time_close = "<cms:date format='H:i:s'/><cms:if "<cms:func_exists 'show-ms' />" > <cms:call 'show-ms' /></cms:if>" />
+
+            <cms:if job.error>
+
+                <cms:set job.status = 'JOB_ERROR' />
+                <cms:set job.msg="Job [ <cms:show job.name /> ] FAILED" />
+
+            <cms:else_if job.is_complete />
+
+                <cms:set job.status='JOB_COMPLETE' />
+                <cms:set job.msg="Job [ <cms:show job.name /> ] is COMPLETE" />
+
+            </cms:if>
+
+            <cms:if "<cms:call 'is-callable' func=job.user.report_func />"><cms:call job.user.report_func job /></cms:if>
+    </cms:each>
+
+</cms:func>

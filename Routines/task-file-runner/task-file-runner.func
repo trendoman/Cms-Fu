@@ -1,0 +1,52 @@
+<cms:func 'task-file-runner' path_func=''><cms:ignore>
+    ---
+    Task wrapper.
+    Embeds a snippet and returns back in JSON whatever the snippet echo'ed.
+    Params for snippet are usually taken from URL or may be passed directly.
+
+    Example -
+
+        <cms:call 'task-file-runner' />
+
+    ---
+    You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+    Donate and help keep functions updated!
+    Support requests: tony.smirnov@gmail.com "Antony"
+    </cms:ignore><cms:ignore>
+
+            * send back prepared JSON with details how task performed.
+    </cms:ignore>
+    <cms:set job_name = "<cms:get 'k_named_args.job'   default="<cms:gpc 'job' method='get' />" />" />
+    <cms:set pg       = "<cms:get 'k_named_args.pg'    default="<cms:gpc 'pg' method='get' />" />" />
+    <cms:set pg_limit = "<cms:get 'k_named_args.limit' default="<cms:gpc 'limit' method='get' />" />" memo="<!--tweak pagination limit via QS: 'limit=50' or caller param -->" />
+    <cms:set pg_limit = "<cms:get 'pg_limit' default='25' />" memo="<!--25 is default limit if not found in URL or param-->" />
+
+    <cms:set task = '[]' is_json='1' />
+
+    <cms:set task.success = "" />
+    <cms:set task.continue = "" />
+    <cms:set task.current_task = "" />
+    <cms:set task.sequent_task = "" />
+    <cms:set task.error = "" />
+    <cms:set task.msg = "" />
+
+    <cms:set task.task_time_start = "<cms:date format='H:i:s'/><cms:if "<cms:func_exists 'show-ms' />" > <cms:call 'show-ms' /></cms:if>" />
+    <cms:set task.task_time_close = "" />
+    <cms:set task.pg = pg />
+    <cms:set task.pg_limit = pg_limit />
+    <cms:set task.notes = "[]" is_json='1' />
+    <cms:set task.task_file = "<cms:show job_name />.inc" />
+    <cms:set task.path_func = path_func />
+
+    <cms:if "<cms:call 'is-callable' func=task.path_func />"><cms:set task.task_file = "<cms:trim><cms:call task.path_func job_name /></cms:trim>" /></cms:if>
+    <cms:if "<cms:exists task.task_file />"><cms:embed task.task_file param1='test'></cms:embed>
+    <cms:else /><cms:set task.error = "File [ <cms:show task.task_file /> ] not found" />
+    </cms:if>
+
+    <cms:set task.task_time_close = "<cms:date format='H:i:s'/><cms:if "<cms:func_exists 'show-ms' />" > <cms:call 'show-ms' /></cms:if>" />
+
+    <cms:abort>
+        <cms:content_type 'application/json' />
+        <cms:show task as_json='1' />
+    </cms:abort>
+</cms:func>

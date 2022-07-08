@@ -1,0 +1,72 @@
+<cms:func 'add-job' name='myjob' list='mytodo' ><cms:ignore>
+    ---
+    1. Creates an object 'job' only with named parameters, including user-supplied extra params;
+    2. Validate user-supplied functions
+    3. Adds the object 'myjob' to the array 'mytodo'.
+
+    View README.md!!
+
+    Example -
+
+        <cms:call 'add-job' name='myjob' list='mytodo' /><cms:show mytodo as_json='1'/>
+
+    ---
+    You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+    Donate and help keep functions updated!
+    Support requests: tony.smirnov@gmail.com "Antony"
+    </cms:ignore>
+    <cms:set job = "[]" is_json='1' />
+
+    <cms:set job.name = name />
+
+    <cms:set job.is_complete = "" />
+    <cms:set job.status = "" />
+    <cms:set job.error = "" />
+
+    <cms:set job.initial_task = "<cms:get 'k_named_args.initial_task' default='' />" />
+    <cms:set job.current_task = "<cms:get 'k_named_args.current_task' default='' />" />
+    <cms:set job.sequent_task = "<cms:get 'k_named_args.sequent_task' default='' />" />
+
+    <cms:if k_named_args.masterpage && job.initial_task eq '' && job.current_task eq '' && job.sequent_task eq '' >
+        <cms:set template_link = "<cms:link masterpage=k_named_args.masterpage />" />
+        <cms:set starting_link = "<cms:add_querystring link=template_link querystring="<cms:concat 'job=' job.name />" />" />
+        <cms:set starting_link = "<cms:add_querystring link=starting_link querystring=k_named_args.qs />" />
+        <cms:set job.initial_task = starting_link />
+        <cms:set job.current_task = starting_link />
+        <cms:set job.sequent_task = starting_link />
+    </cms:if>
+
+    <cms:set job.time_start = "" />
+    <cms:set job.time_close = "" />
+    <cms:set job.report = '[]' is_json='1' />
+    <cms:set job.msg = "" />
+    <cms:set job.notes = '[]' is_json='1' />
+
+    <cms:set job.list = list />
+    <cms:set job.user = k_named_args />
+
+
+    <cms:if "<cms:is_array k_named_args.engine_func />"><cms:set job.notes. = 'Using custom ~anonymous func~ engine.' />
+    <cms:else_if "<cms:not k_named_args.engine_func />" /><cms:set job.notes. = 'Using default ~fetch-url~ engine.' />
+    <cms:else_if k_named_args.engine_func /><cms:set job.notes. = "Using custom ~<cms:show k_named_args.engine_func />~ engine." />
+    </cms:if>
+
+    <cms:if "<cms:is_array k_named_args.report_func />"><cms:set job.notes. = 'Using custom ~anonymous func~ report.' />
+    <cms:else_if "<cms:not k_named_args.report_func />" /><cms:set job.notes. = 'Opted not to display report via "report_func".' />
+    <cms:else_if k_named_args.report_func /><cms:set job.notes. = "Using custom ~<cms:show k_named_args.report_func />~ report." />
+    </cms:if>
+
+
+    <cms:if "<cms:call 'is-callable' k_named_args.engine_func />" >
+    <cms:else_if k_named_args.engine_func = '' /><cms:set job.user.engine_func = '' />
+    <cms:else /><cms:set job.user.engine_func = 'ERROR' /><cms:set job.notes. = "ERROR: specified custom engine function is not callable." />
+    </cms:if>
+
+    <cms:if "<cms:call 'is-callable' k_named_args.report_func />" ><cms:set job.user.report_func = k_named_args.report_func />
+    <cms:else_if k_named_args.report_func = '' /><cms:set job.user.report_func = '' />
+    <cms:else /><cms:set job.user.report_func = 'ERROR' /><cms:set job.notes. = "ERROR: specified custom report function is not callable." />
+    </cms:if>
+
+
+    <cms:call 'add-value-to-array' value=job array=list />
+</cms:func>
