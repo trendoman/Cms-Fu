@@ -1,0 +1,70 @@
+<cms:func 'error-log' msg='' delete=''><cms:ignore>
+   ---
+   Outputs a Couch variable or PHP variable/object/constant to PHP's error_log
+   <cms:call 'error-log' myvar />
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>
+      global $CTX;
+      <cms:if delete='1' >
+         if( file_exists(ini_get('error_log')) ) @unlink(ini_get('error_log'));
+      </cms:if>
+      $var = $CTX->get('msg');
+      if( strpos(trim($var), '$') === 0 )
+      {
+         $var = str_replace(' ', '', trim($var));
+         if( strpos($var, '->') )
+         {
+            $parts = explode('->', $var);
+            $obj = $parts[0];
+            $prp = $parts[1];
+            $var = $obj;
+         }
+         $obj_name = $var;
+         $var = ltrim($var, '$');
+         $var = $GLOBALS[$var];
+      }
+      error_log( '###################### func "error_log"');
+      if( is_array($var) )
+      {
+         $count = count($var);
+         error_log(print_r('.:: Array('.$count.') ::.', true));
+         error_log('______________________');
+         error_log(print_r($var, true));
+      }
+      elseif( is_string($var) )
+      {
+         $count = strlen($var);
+         error_log(print_r('.:: String('.$count.') ::.', true));
+         error_log('______________________');
+         error_log('');
+         error_log(print_r($var, true));
+         error_log('');
+      }
+      elseif( is_object($var) )
+      {
+         if( $prp )
+         {
+            $props = get_object_vars ( $var );
+            error_log(print_r('.:: Object '.$obj.'->'.$prp.' ::.', true));
+            error_log('______________________');
+            error_log('');
+            error_log(var_export($props[$prp], true));
+            error_log('');
+         }
+         else
+         {
+            error_log(print_r('.:: Object '.$obj_name.' ::.', true));
+            error_log('______________________');
+            error_log('');
+            error_log(var_export($var, true));
+            error_log('');
+         }
+      }
+      error_log( '########################### end log');
+      return;
+    </cms:php>
+</cms:func>

@@ -2,6 +2,12 @@
 
 *Latest on top*
 
+<!--
+* ## [Generators &raquo; random-char-digit-sign-name](Generators/random-char-digit-sign-name)
+   A few functions to get UTF-8 compliant random strings
+-->
+* ## [Logs &raquo; error-log](Logs/error-log)
+   Pumped-up logging to PHP's error_log
 * ## [Routines &raquo; add-job](Routines/add-job)
 * ## [Routines &raquo; execute-jobs](Routines/execute-jobs)
 * ## [Routines &raquo; task-file-runner](Routines/task-file-runner)

@@ -1,0 +1,10 @@
+<cms:func 'php-log' msg='' delete=''><cms:ignore>
+   ---
+   Alias to 'error-log' func
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:call 'error-log' msg='' delete='' />
+</cms:func>
