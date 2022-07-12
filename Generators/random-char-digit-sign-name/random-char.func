@@ -1,0 +1,20 @@
+<cms:func 'random-char' set='abcdefghijklmnopqrstuvwxyz0123456789/*-+()|\#$%^&@[]{};' ><cms:ignore>
+   ---
+   Random char from set
+   Example -
+
+     <cms:call 'random-char' />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Write me to: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>
+      global $CTX;
+      $set = $CTX->get('set');
+      $gen = preg_split('//u', $set, -1, PREG_SPLIT_NO_EMPTY);
+      $rnd = rand(0, count($gen)-1);
+      return $gen[$rnd];
+   </cms:php>
+</cms:func>

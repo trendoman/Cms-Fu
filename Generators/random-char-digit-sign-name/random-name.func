@@ -1,0 +1,28 @@
+<cms:func 'random-name' length='8' set='abcdefghijklmnopqrstuvwxyz0123456789' ><cms:ignore>
+   ---
+   {Length} random chars from set
+   Example -
+
+     <cms:call 'random-name' '64' />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Write me to: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>
+      global $CTX;
+      $set = $CTX->get('set');
+      $len = intval($CTX->get('length'));
+      $gen = preg_split('//u', $set, -1, PREG_SPLIT_NO_EMPTY);
+      $cnt = count($gen);
+
+      $html='';
+      for($x=0; $x<$len; $x++)
+      {
+         $rnd = rand(0, $cnt-1);
+         $html .= $gen[$rnd];
+      }
+      return $html;
+   </cms:php>
+</cms:func>
