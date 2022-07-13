@@ -52,6 +52,12 @@ Returns a random sign from a specified **set**.
 
 Default **set** is plus, minus e.g. ***+–***
 
+## Related tags
+
+* **random_name**
+
+   A built-in Couch tag `<cms:random_name />` returns **fixed 32** lowercase alphanumerics e.g. `330a1f8f04696eca7f29d0a5e90e9a35`.
+
 ## Installation
 
 **Use [Autoloading](https://github.com/trendoman/Cms-Fu/tree/master/ADDON-FUNCS-ON-DEMAND.md).**

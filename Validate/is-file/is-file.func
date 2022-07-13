@@ -1,0 +1,23 @@
+<cms:func 'is-file' file='' ><cms:ignore>
+   ---
+   Returns '1' if the filename exists and is a regular file, '0' otherwise.
+   Example -
+
+      <cms:call 'is-file' 'index.php' />
+
+      <cms:if "<cms:call 'is-file' 'index.php' />">...</cms:if>
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: "Anton S." <tony.smirnov@gmail.com>
+   </cms:ignore>
+   <cms:php>
+      global $CTX;
+
+      $file = trim( strval( $CTX->get('file') ) );
+      $rel_path = str_replace( array( K_SITE_URL, K_SITE_DIR, ), "", $file );
+      if( !is_file(K_SITE_DIR.$rel_path) ) return '0';
+      return '1';
+   </cms:php>
+</cms:func>
