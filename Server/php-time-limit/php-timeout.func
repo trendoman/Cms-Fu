@@ -1,9 +1,9 @@
-<cms:func 'php' timeout='120'><cms:ignore>
+<cms:func 'php-timeout' timeout='120'><cms:ignore>
    ---
    Alias to 'php-time-limit'
    Example -
 
-     <cms:call 'php' />
+      <cms:call 'php-timeout' />
 
    ---
    </cms:ignore>
