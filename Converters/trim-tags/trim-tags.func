@@ -1,0 +1,47 @@
+<cms:func 'trim-tags' html='' tags='p, br' ><cms:ignore>
+   ---
+   Removes HTML tags only around the string.
+   Example -
+
+      <cms:call 'trim-tags' my_richtext />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:set orig_html = html scope='local'/>
+   <cms:php>
+      global $CTX;
+
+      $html = trim( strval( $CTX->get( 'html' ) ) );
+      $CTX->set('orig_html', $html, 'parent');
+      $usertags = str_replace( array( "<", ">" ,"/" ), '', $CTX->get('tags') );
+      $arr_tags = preg_split('/[^\S]*,[^\S]*/', $usertags, -1, PREG_SPLIT_NO_EMPTY);
+
+      if( $html == '' || !count($arr_tags) ) return;
+      $arr_self_closed = array_intersect(
+                        $arr_tags,
+                        array(
+                           "area", "base", "br", "col", "embed", "hr", "img",
+                           "input", "link", "meta", "param", "source",
+                           "track", "wbr"
+                        )
+                     );
+      $arr_paired = array_diff( $arr_tags, $arr_self_closed );
+      foreach( $arr_self_closed as $tagname )
+      {
+         $html = preg_replace( '/^<'.$tagname.'[^>]*?>/im', '', trim($html) );
+         $html = preg_replace( '/<'.$tagname.'[^>]*?>$/im', '', trim($html) );
+      }
+      foreach( $arr_paired as $tagname )
+      {
+         $html = preg_replace( '/^<'.$tagname.'[^>]*?>([\s\S]*)<\/'.$tagname.'[^>]*?>$/im', '$1', trim($html) );
+      }
+      $CTX->set( 'html', trim($html), 'parent' );
+   </cms:php>
+   <cms:if orig_html ne html>
+      <cms:set html = "<cms:call 'trim-tags' html tags />" scope='parent'/>
+   </cms:if>
+   <cms:show html />
+</cms:func>

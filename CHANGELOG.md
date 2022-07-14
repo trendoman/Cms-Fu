@@ -2,6 +2,8 @@
 
 *Latest on top*
 
+* ## [Converters &raquo; trim-tags](Converters/trim-tags)
+   Smart trimming of HTML tags from around the text.
 * ## [Validate &raquo; is-file](Validate/is-file)
    Checks if local file exists if given an URL or disk path.
 * ## [Generators &raquo; random-char-digit-sign-name](Generators/random-char-digit-sign-name)
