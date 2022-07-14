@@ -27,10 +27,9 @@ Pass a string or multiline richtext content to the tag and define list of unwant
 Processing is recursive —
 
 * first, 'br' is removed from the right side of the string in the above snippet.
-* Second, opening **and** closing 'p' will trimmed from the start and end of the string respectively, because 'p' is treated as a non self-closed tag.
+* Second, opening **and** closing 'p' will be trimmed from the start and end of the string respectively, because 'p' is treated as a non self-closed tag.
 * Next, 'span' will be left untouched, because it lacks closing 'span'.
 * Finally, last 'p' surrounding 'Thanks!' will not be touched, because it encloses only a part of the string, therefore can not be considered for 'trimming'.
-
 
 Self-closed tags are: *area, base, br, col, embed, hr, img, input, link, meta, param, source, track, wbr*.
 

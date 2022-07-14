@@ -1,0 +1,49 @@
+<cms:func 'is-image' file='' strict='1'><cms:ignore>
+   ---
+   Returns '1' if the filename is an image, '0' otherwise.
+   Example -
+
+      <cms:call 'is-image' file='test.png' />
+
+      <cms:if "<cms:call 'is-image' 'index.php' />">...</cms:if>
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: "Anton S." <tony.smirnov@gmail.com>
+   </cms:ignore>
+   <cms:php>
+      global $CTX;
+
+      $file = trim( $CTX->get('file') );
+      $strict = intval( trim( $CTX->get('strict') ) );
+      $abs_path = K_SITE_DIR . str_replace( array( K_SITE_URL, K_SITE_DIR, ), "", $file );
+
+      if( !$strict )
+      {
+         $type = mime_content_type($abs_path);
+         return (strpos( $type, 'image/' ) === false) ? '0' : '1';
+      }
+
+      $dat = @getimagesize($abs_path);
+      if($dat === false) return '0';
+
+      try {
+         switch($dat[2])
+         {
+            case IMAGETYPE_GIF :  $newim = @imagecreatefromgif($abs_path); break;
+            case IMAGETYPE_PNG :  $newim = @imagecreatefrompng($abs_path); break;
+            case IMAGETYPE_BMP :  $newim = @imagecreatefrombmp($abs_path); break;
+            case IMAGETYPE_JPEG : $newim = @imagecreatefromjpeg($abs_path); break;
+            case IMAGETYPE_WEBP : $newim = @imagecreatefromwebp($abs_path); break;
+            default: return '0';
+         }
+      } catch (Exception $e)
+      {
+         error_log( 'Error: Func "is-image" could not verify image in strict mode. Path: '.$abs_path );
+         return '0';
+      }
+
+      return ( $newim === false ) ? '0' : '1';
+    </cms:php>
+</cms:func>

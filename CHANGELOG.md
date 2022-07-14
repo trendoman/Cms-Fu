@@ -2,6 +2,8 @@
 
 *Latest on top*
 
+* ## [Validate &raquo; is-image](Validate/is-image)
+   Validate ***gif, png, bmp, jpeg, webp*** images by content or (less strict) mime.
 * ## [Converters &raquo; trim-tags](Converters/trim-tags)
    Smart trimming of HTML tags from around the text.
 * ## [Validate &raquo; is-file](Validate/is-file)
