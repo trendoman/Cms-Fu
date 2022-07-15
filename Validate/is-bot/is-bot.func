@@ -1,0 +1,47 @@
+<cms:func 'is-bot'><cms:ignore>
+   ---
+   Is 'visitor' a bot?
+   Example -
+
+      <cms:if "<cms:call 'is-bot' />">..</cms:if>
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>
+      $vendor_path = K_SITE_DIR.K_SNIPPETS_DIR.'/funcs/Validate/is-bot/vendor/';
+
+      $handle_error = function($class) use ($vendor_path) {
+         error_log( "Error: Function 'is-bot' could not find ".$class." at ".$vendor_path );
+         return '0';
+      };
+
+      include_once($vendor_path.'CrawlerDetect.php');
+      if(!class_exists('\Jaybizzle\CrawlerDetect\CrawlerDetect')) return $handle_error('CrawlerDetect');
+
+      include_once($vendor_path.'Fixtures/AbstractProvider.php');
+      if(!class_exists('\Jaybizzle\CrawlerDetect\Fixtures\AbstractProvider')) return $handle_error('\Fixtures\AbstractProvider');
+
+      include_once($vendor_path.'Fixtures/Crawlers.php');
+      if(!class_exists('\Jaybizzle\CrawlerDetect\Fixtures\Crawlers')) return $handle_error('\Fixtures\Crawlers');
+
+      include_once($vendor_path.'Fixtures/Exclusions.php');
+      if(!class_exists('\Jaybizzle\CrawlerDetect\Fixtures\Exclusions')) return $handle_error('\Fixtures\Exclusions');
+
+      include_once($vendor_path.'Fixtures/Headers.php');
+      if(!class_exists('\Jaybizzle\CrawlerDetect\Fixtures\Headers')) return $handle_error('\Fixtures\Headers');
+
+      $CrawlerDetect = new \Jaybizzle\CrawlerDetect\CrawlerDetect;
+      if($CrawlerDetect->isCrawler())
+      {
+         //return $CrawlerDetect->getMatches();
+         return '1';
+      }
+      else
+      {
+         return '0';
+      }
+   </cms:php>
+</cms:func>

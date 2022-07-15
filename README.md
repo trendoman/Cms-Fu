@@ -27,4 +27,6 @@ Please visit [**CHANGELOG**](/CHANGELOG.md) and explore directories in repositor
 
 ## Support
 
+[![Mail](https://img.shields.io/badge/gmail-%23539CFF.svg?&style=for-the-badge&logo=gmail&logoColor=white)](mailto:"Anton"<tony.smirnov@gmail.com>?subject=[GitHub])
+
 Check out my dedicated [**SUPPORT**](/SUPPORT.md) page.
