@@ -11,7 +11,7 @@
    Write me to: tony.smirnov@gmail.com "Antony"
    </cms:ignore>
    <cms:set clock = "<cms:get 'clock' default='[]' scope='global' as_json='1' />" is_json='1' scope='global'/>
-   <cms:set tnow = "<cms:date format='H:i:s'/><cms:if "<cms:func_exists 'show-ms' />" > <cms:call 'show-ms' /></cms:if>" />
+   <cms:set tnow = "<cms:date format='H:i:s'/> <cms:call 'show-ms' />" />
    <cms:put var="clock.<cms:show tnow />" value=memo scope='global'/>
    <cms:if show ><cms:if "<cms:tag_exists 'show_json' />"><cms:show_json clock /><cms:else /><cms:show clock as_json='1' /></cms:if></cms:if>
 </cms:func>

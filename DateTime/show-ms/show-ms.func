@@ -10,6 +10,6 @@
    Donate and help keep functions updated!
    Support requests: tony.smirnov@gmail.com "Antony"
    </cms:ignore><cms:php>
-      echo $milliseconds = substr(round(microtime(true) * 1000), -3);
+      return $milliseconds = substr(round(microtime(true) * 1000), -3);
    </cms:php>
 </cms:func>

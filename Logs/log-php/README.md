@@ -1,12 +1,12 @@
-# error-log
+# log-php
 
 Print something to PHP's error_log.
 
 ```xml
-<cms:call 'error-log' myvar />
+<cms:call 'log-php' myvar />
 ```
 
-Func has aliases: **log-php, php-log** with the same parameters.
+Func has aliases: **error-log, php-log** with the same parameters.
 
 ## Parameters
 
@@ -18,19 +18,19 @@ Func has aliases: **log-php, php-log** with the same parameters.
 Func can delete error_log to clear it, before printing strings or Couch variables (including arrays)
 
 ```xml
-<cms:call 'error-log' k_user_name '1'/>
+<cms:call 'log-php' k_user_name '1'/>
 ```
 
 PHP Variables may be sent as well e.g.
 
 ```xml
-<cms:call 'error-log' '$myvar' />
+<cms:call 'log-php' '$myvar' />
 ```
 
 example with objects properties –
 
 ```xml
-<cms:call 'error-log' '$FUNCS->funcs' />
+<cms:call 'log-php' '$FUNCS->funcs' />
 ```
 
 Strings and arrays are printed with info about length and count respectively. Objects and properties include their names.
@@ -48,12 +48,12 @@ Strings and arrays are printed with info about length and count respectively. Ob
 
 ## Related funcs
 
-* [**Cms-Fu &raquo; log-html**](https://github.com/trendoman/Cms-Fu/tree/master/Logs/log-html)
+* **[Cms-Fu &raquo; log-html](https://github.com/trendoman/Cms-Fu/tree/master/Logs/log-html)**
 
 ## Related tags
 
-* [**Documentation &raquo; log**](https://docs.couchcms.com/tags-reference/log.html)
-* [**Midware Tags Reference &raquo; delete_file**](https://github.com/trendoman/Midware/tree/main/tags-reference/delete_file.md)
+* **[Documentation &raquo; log](https://docs.couchcms.com/tags-reference/log.html)**
+* **[Tweakus-Dilectus Tags » delete_file](https://github.com/trendoman/Tweakus-Dilectus/tree/main/anton.cms%40ya.ru__tags-new/delete_file)**
 
 ## Installation
 
@@ -62,7 +62,7 @@ Strings and arrays are printed with info about length and count respectively. Ob
 or, alternatively, manually copy the func code to the page before the calling or embed func as a snippet —
 
 ```xml
-<cms:embed 'funcs/Logs/error-log/error-log.func' />
+<cms:embed 'funcs/Logs/log-php/log-php.func' />
 ```
 
 ## Support

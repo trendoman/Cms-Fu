@@ -36,10 +36,15 @@ preprocessed with 'trim' –
 Internally, function wraps message with `<br>` and employs 'cms:log' tag to write the file.
 
 
+## Related funcs
+
+* **[Cms-Fu &raquo; log-php](https://github.com/trendoman/Cms-Fu/tree/master/Logs/log-php)**
+
 ## Related tags
 
-* [**Documentation &raquo; log**](https://docs.couchcms.com/tags-reference/log.html)
-* [**Midware Tags Reference &raquo; trim**](https://github.com/trendoman/Midware/tree/main/tags-reference/trim.md)
+* **[Documentation &raquo; log](https://docs.couchcms.com/tags-reference/log.html)**
+* **[Midware Tags Reference &raquo; trim](https://github.com/trendoman/Midware/tree/main/tags-reference/trim.md)**
+* **[Tweakus-Dilectus Tags » delete_file](https://github.com/trendoman/Tweakus-Dilectus/tree/main/anton.cms%40ya.ru__tags-new/delete_file)**
 
 ## Installation
 
