@@ -2,6 +2,8 @@
 
 *Latest on top*
 
+* ## [**Sapling &raquo; embed-once**](Sapling/embed-once)
+   Embed **once** and use path relative to other snippet.
 * ## [Validate &raquo; is-bot](Validate/is-bot)
    Detects over 1400 bots. Based on code from **[CrawlerDetect.io →](https://crawlerdetect.io/)**.
 * ## [Validate &raquo; is-image](Validate/is-image)

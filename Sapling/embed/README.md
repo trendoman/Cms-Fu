@@ -1,6 +1,6 @@
 # embed
 
-Function **embed** *embeds* a snippet with parameters and a user-defined *callback* function.
+Function **embed** embeds a snippet with parameters and a user-defined *callback* function.
 
 ```xml
 <cms:call 'embed' 'snippet.inc' />
@@ -173,18 +173,27 @@ Plus an unnamed variable holding content of the snippet is passed to the callbac
 
 * **result**
 
+## Related Funcs
+
+* **[Sapling &raquo; embed-once](https://github.com/trendoman/Cms-Fu/tree/master/Sapling/embed-once)** – if called again, this func does not embed same snippet twice
+
 ## Related Tags
 
-* [**Documentation &raquo; embed**](https://docs.couchcms.com/tags-reference/embed.html)
+* [**Documentation &raquo; embed**](https://docs.couchcms.com/tags-reference/embed.html) – doc page on standard Couch tag ***&lt;cms:embed /&gt;***
 * [**Midware Tags Reference &raquo; func**](https://github.com/trendoman/Midware/tree/main/tags-reference/func.md)
 * [**Midware Tags Reference &raquo; call**](https://github.com/trendoman/Midware/tree/main/tags-reference/call.md)
 * [**Tweakus-Dilectus Modded Tags &raquo; call**](https://github.com/trendoman/Tweakus-Dilectus/tree/main/anton.cms%40ya.ru__tags-modded/call)
 
 ## Related pages
 
+* **[Midware Core Concepts &raquo; Reusable Functions](https://github.com/trendoman/Midware/tree/main/concepts/Reusable-Functions#func-vs-embed)** — **A must-read concept!** There we compare ***cms:embed*** Vs. ***cms:func*** Vs. ***cms:tag***.
 * [**Midware Core Concepts &raquo; Couch Arrays**](https://github.com/trendoman/Midware/tree/main/concepts/Arrays)
 
 ## Installation
+
+**Use [Autoloading](https://github.com/trendoman/Cms-Fu/tree/master/ADDON-FUNCS-ON-DEMAND.md),**
+
+or, alternatively, manually copy the func code to the page before the calling or embed func as a snippet —
 
 ```xml
 <cms:embed 'funcs/Sapling/embed/embed.func' />

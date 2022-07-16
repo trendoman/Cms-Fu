@@ -1,0 +1,49 @@
+<cms:func 'embed-once' snippet='' relative_to=''><cms:ignore>
+   ---
+   Place content on page only once.
+   Example -
+
+      <cms:call 'embed-once' 'assets.inc' relative_to=k_named_args.snippet  />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>
+      global $CTX;
+
+      $snippet = trim( $CTX->get( 'snippet', $local=1 ), "/\\ " );
+      $snippet_dir = ltrim( dirname( trim( $CTX->get( 'relative_to', $local=1 ), "/\\ " ) ), './\\' );
+      if( $snippet_dir != '' ) $snippet = $snippet_dir . "/" . $snippet;
+      if( !is_file( K_SITE_DIR . K_SNIPPETS_DIR . "/" . $snippet ) ){
+         $CTX->set( 'snippet', '?', 'parent' );
+         return;
+      }
+
+      /* 'once' is based on hash of path stored in a global var  */
+      $hash = md5($snippet);
+      $arr_embeds = $CTX->get( 'k__embeds', $global=2 );
+
+      if( !is_array( $arr_embeds ) )
+      {
+         $CTX->set( 'k__embeds', $arr_embeds = array(), 'global' );
+      }
+      elseif( array_key_exists( $hash, $arr_embeds ) )
+      {
+         $CTX->set( 'snippet', '+', 'parent' );
+         return;
+      };
+
+      $arr_embeds[$hash] = $snippet;
+      $CTX->set( 'snippet', $snippet, 'parent' );
+      $CTX->set( 'k__embeds', $arr_embeds, 'global' );
+
+      return;
+   </cms:php>
+   <cms:if snippet eq '?'><cms:ignore><!-- File not found --></cms:ignore>
+   <cms:else_if snippet eq '+' /><cms:ignore><!-- File embedded earlier --></cms:ignore>
+   <cms:else /><cms:ignore><!-- All OK! Embed! --></cms:ignore>
+      <cms:call 'embed' snippet />
+   </cms:if>
+</cms:func>
