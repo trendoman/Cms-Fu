@@ -16,7 +16,7 @@
       global $CTX;
 
       $file = trim( strval( $CTX->get('file') ) );
-      $rel_path = str_replace( array( K_SITE_URL, K_SITE_DIR, ), "", $file );
+      $rel_path = str_replace( array( K_SITE_URL, K_SITE_DIR, "\\" ), array("", "", "/"), $file );
       if( !is_file(K_SITE_DIR.$rel_path) ) return '0';
       return '1';
    </cms:php>

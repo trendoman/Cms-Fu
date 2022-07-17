@@ -19,7 +19,7 @@
       $usertags = str_replace( array( "<", ">" ,"/" ), '', $CTX->get('tags') );
       $arr_tags = preg_split('/[^\S]*,[^\S]*/', $usertags, -1, PREG_SPLIT_NO_EMPTY);
 
-      if( $html == '' || !count($arr_tags) ) return;
+      if( $html == '' || count($arr_tags) === 0 ) return;
       $arr_self_closed = array_intersect(
                         $arr_tags,
                         array(

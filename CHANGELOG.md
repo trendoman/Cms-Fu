@@ -2,6 +2,8 @@
 
 *Latest on top*
 
+* ## [Converters &raquo; copy-hash](Converters/copy-hash)
+   Get part of the string after ***#*** (anchor-hash)
 * ## [**Sapling &raquo; embed-once**](Sapling/embed-once)
    Embed **once** and use path relative to other snippet.
 * ## [Validate &raquo; is-bot](Validate/is-bot)

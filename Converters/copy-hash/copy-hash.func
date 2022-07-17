@@ -1,0 +1,20 @@
+<cms:func 'copy-hash' str=''><cms:ignore>
+   ---
+   Copy hash (last) from string
+   Example -
+
+      <cms:call 'copy-hash' 'string#anchor'/>
+      → anchor
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>
+      global $CTX;
+      $str = $CTX->get('str');
+      $parts = explode( '#', $str );
+      return trim( array_pop($parts) );
+   </cms:php>
+</cms:func>

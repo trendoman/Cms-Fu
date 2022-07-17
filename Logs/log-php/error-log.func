@@ -10,7 +10,7 @@
    <cms:php>
       global $CTX;
       <cms:if delete='1' >
-         if( file_exists(ini_get('error_log')) ) @unlink(ini_get('error_log'));
+         if( is_file(ini_get('error_log')) ) @unlink(ini_get('error_log'));
       </cms:if>
       $var = $CTX->get('msg');
       if( strpos(trim($var), '$') === 0 )
