@@ -1,97 +1,99 @@
-<cms:func 'fetch-url' url='' as_ajax='1' send_cookie='0' accept_cookie='0'><cms:ignore>
-    ---
-    Requests content of any URL
-    Example -
+<cms:func 'fetch-url' url='' as_ajax='1' send_cookie='1' accept_cookie='1' ><cms:ignore>
+   ---
+   Requests content of any URL
+   Example -
 
-        <cms:call 'fetch-url' k_page_link />
+      <cms:call 'fetch-url' k_page_link />
 
-    ---
-    You should have downloaded this function from https://github.com/trendoman/Cms-Fu
-    Donate and help keep functions updated!
-    Support requests: tony.smirnov@gmail.com "Antony"
-    </cms:ignore>
-    <cms:php>
-        global $CTX, $DB, $FUNCS;
-        $mycookie = '';
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>
+      global $CTX, $DB, $FUNCS;
 
-        if( isset($_SERVER['HTTP_CMS_FETCH_ONCE']) ) return;
-        if( <cms:validate value=url validator='url' /> ){
-            $myURL = $CTX->get('url');
-        } else {
-            return( "ERROR in func 'fetch-url'. Invalid supplied URL: " . $CTX->get('url') );
-        }
+      if( isset($_SERVER['HTTP_COUCHCMS_SELF_FETCH_ONCE']) ){ return; }
+      if (! $myURL = filter_var( trim($CTX->get('url')), FILTER_VALIDATE_URL ) )
+      {
+         error_log( "ERROR in func 'fetch-url'. Invalid supplied URL: " . $CTX->get('url') );
+         return( "ERROR in func 'fetch-url'. Invalid supplied URL: " . $CTX->get('url') );
+      }
 
-        $accept_cookie = ( $CTX->get('accept_cookie') == 1 ) ? 1 : 0;
-        $ajax_header = ( $CTX->get('as_ajax') == 1 ) ? 1 : 0;
-        $send_cookie = ( $CTX->get('send_cookie') == 1 ) ? 1 : 0;  /* Include cookies of the logged-in user? */
+      $mycookie = '';
+      $referer = '';
+      $http_header = array();
 
-        if( strpos($myURL, K_SITE_URL) === 0 ){ /* Same-domain request - closing session, do not force commit */
-            if( session_id() ) session_write_close();
-            $DB->commit( 0 );
+      $send_cookie = $CTX->get('send_cookie', 1) == '0' ? 0 : 1;
+      $accept_cookie = $CTX->get('accept_cookie', 1) == '0' ? 0 : 1;
+      if( $CTX->get('as_ajax', 1) != '0' ) {
+         $http_header[] = "X-Requested-With: XMLHttpRequest";
+      }
+      if( strpos($myURL, K_SITE_URL) )
+      {
+         /* Same-domain request - closing session, do not force commit */
+         if( session_id() ) session_write_close();
+         $DB->commit(0);
 
-            $_arr = array();
-            if( $send_cookie ){
-                foreach( $_COOKIE as $k=>$v ){ if(!is_array($k)) $_arr[] = $k."=".$v; }
-                $mycookie = implode("; ", $_arr);
+         if( $send_cookie )
+         {
+            foreach( $_COOKIE as $k=>$v ){
+               if( is_array($k) === 0 ) $mycookie .= $k."=".$v."; ";
             }
-        }
+         }
+         /* Protect from self-looping */
+         $http_header[] = "COUCHCMS_SELF_FETCH_ONCE: 1";
+         $referer = $CTX->get('k_page_link');
+      }
 
-        $http_header = array();
-        $http_header[] = "Expect:";
-        $http_header[] = "Accept: */*";
-        if( $ajax_header ){
-            $http_header[] = "X-Requested-With: XMLHttpRequest";
-        }
-        $http_header[] = "CMS_FETCH_ONCE: true"; /* Protect from self-looping */
+      $curlopts = $CTX->get('curl');
 
-        if( extension_loaded('curl') ){
+      $arr_cookies = array_filter( array_map( "trim", explode(";", $curlopts['cookies']) ), "strlen");
+      $mycookie.= implode(";", $arr_cookies);
+      $useragent = $curlopts['useragent'] ? trim($curlopts['useragent']) : "CouchCMS ".$CTX->get('k_cms_version');
+      $referer = $curlopts['referer'] ? trim($curlopts['referer']) : $referer;
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $myURL );
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0 );
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0 );
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_TIMEOUT, 3);
-            curl_setopt($ch, CURLOPT_MAXREDIRS, 5 );
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true );
-            /*
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-            */
-            curl_setopt($ch, CURLOPT_USERAGENT, "CouchCMS ".$CTX->get('k_cms_version') );
-            curl_setopt($ch, CURLOPT_REFERER, $CTX->get('k_page_link') );
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $http_header);
-            curl_setopt($ch, CURLOPT_COOKIE, $mycookie );
+      if( extension_loaded('curl') ){
 
-            /* accept cookies for redirects */
-            if( $accept_cookie ){
-                $tmp_dir = $FUNCS->get_tmp_dir();
-                $cookie_file = $tmp_dir.'myfetch_cookies.txt';
-                curl_setopt($ch, CURLOPT_COOKIESESSION, true);
-                curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file);
-                curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
-            }
+         $ch = curl_init();
+         curl_setopt($ch, CURLOPT_URL, $myURL );
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0 );
+         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0 );
+         curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1 );
+         curl_setopt($ch, CURLOPT_AUTOREFERER, 1 );
+         curl_setopt($ch, CURLOPT_MAXREDIRS, 3 );
+         curl_setopt($ch, CURLOPT_REFERER, $referer);
+         curl_setopt($ch, CURLOPT_USERAGENT, $useragent);
+         curl_setopt($ch, CURLOPT_HTTPHEADER, $http_header);
+         curl_setopt($ch, CURLOPT_COOKIE, $mycookie );
 
-            $output = curl_exec($ch);
-            $status = curl_getinfo($ch);
-            curl_close($ch);
-            $CTX->set('_curl_status', $status);
+         if( $accept_cookie ){
+             $cookie_file = $FUNCS->get_tmp_dir().'mycookies.txt';
+             curl_setopt($ch, CURLOPT_COOKIESESSION, true);
+             curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
+         }
 
-        } else {
+         $output = curl_exec($ch);
+         $status = curl_getinfo($ch);
+         curl_close($ch);
 
-            $opts = array();
-            if( strpos($myURL, 'https')===0 ){
-                $opts['ssl'] = array(
-                    'verify_peer' => false,
-                    'verify_host' => false,
-                    'capture_peer_cert' => false,
-                );
-            }
-            $opts['http']['header'] = implode("\r\n", $http_header) . "\r\nCookie: " . $mycookie;
-            $context = stream_context_create( $opts );
-            $output = @file_get_contents( $myURL, false, $context );
-        }
+         $CTX->set('curl.status', $status, 'parent');
+      } else {
+         $opts = array();
+         if( strpos($myURL, 'https')===0 ){
+             $opts['ssl'] = array(
+                 'verify_peer' => false,
+                 'verify_host' => false,
+                 'capture_peer_cert' => false,
+             );
+         }
+         $opts['http']['header'] = implode("\r\n", $http_header) . "\r\nCookie: " . $mycookie;
+         $context = stream_context_create( $opts );
+         $output = @file_get_contents( $myURL, false, $context );
+      }
 
-        return $output;
+      return $output;
     </cms:php>
 </cms:func>
