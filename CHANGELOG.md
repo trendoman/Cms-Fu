@@ -2,6 +2,8 @@
 
 *Latest on top*
 
+* ## [Server » login](Server/login)
+   Login a user programmatically without a form.
 * ## [Converters &raquo; copy-hash](Converters/copy-hash)
    Get part of the string after ***#*** (anchor-hash)
 * ## [**Sapling &raquo; embed-once**](Sapling/embed-once)

@@ -1,0 +1,57 @@
+<cms:func 'login' username='' password='' email='' id='' redirect='2' ><cms:ignore>
+   ---
+   Process login
+   Example -
+
+      <cms:call 'login' 'admin' 'admin' />
+
+   ---
+   *   redirect=''
+   *   redirect='0'
+   *   redirect='@current'
+   *   redirect='@qs'
+   *   redirect="<cms:show k_site_link />"
+   *   redirect="<cms:admin_link />"
+   *   redirect=k_admin_link
+   *   redirect=k_user_edit_link
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:set username = "<cms:get 'username' default=email />" scope='parent'/>
+   <cms:set username = "<cms:get 'username' default=id />" scope='parent'/>
+   <cms:if username && password && k_logged_out>
+      <cms:if "<cms:tag_exists 'process_login' />">
+         <cms:else />
+         <cms:php>require_once( K_COUCH_DIR.'addons/extended/extended-users.php' );</cms:php>
+      </cms:if>
+      <cms:process_login username=username password=password remember='1' redirect='0' />
+      <cms:if "<cms:not k_login_error />">
+         <cms:set_flash 'logged_in' '1' />
+         <cms:php>
+            global $CTX, $FUNCS, $AUTH;
+            $redirect = trim( $CTX->get('redirect') );
+
+            if( $redirect=='0' ){
+               return;
+            }
+            elseif( $redirect=='1' || $redirect == '@current'){ // redirect to current page
+               $dest = $_SERVER["REQUEST_URI"];
+            }
+            elseif( $redirect=='2' || $redirect == '@qs' || $redirect == '' ){ // link supplied as querystring parameter (this is default behaviour)
+               $dest = $_GET['redirect'];
+               $dest = $FUNCS->unhtmlentities( $dest, K_CHARSET );
+            }
+            else{ // link supplied as parameter to this tag
+               $dest = $redirect;
+            }
+            $AUTH->redirect( $dest );
+         </cms:php>
+      <cms:else />
+         <cms:log "<cms:concat
+            p1='Error: login via tag "process_login" in func "login" failed for user: "'
+            p2=username p3='" and password: "' p4=password p5='"'/>" />
+      </cms:if>
+   </cms:if>
+</cms:func>
