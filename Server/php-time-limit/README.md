@@ -14,6 +14,8 @@ Function has aliases –
 <cms:call 'php-timeout' />
 ```
 
+**NOTE: This functionality may be disabled by shared hosting provider ☺ (use VPS instead).** Check phpinfo on server to review the directive ***disable_functions*** under ***Core***.
+
 ## Parameters
 
 * **timeout**

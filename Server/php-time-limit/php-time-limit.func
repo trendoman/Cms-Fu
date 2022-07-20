@@ -1,19 +1,22 @@
 <cms:func 'php-time-limit' timeout='120'><cms:ignore>
-    ---
-    Override PHP maximum time for executing a script
-    Example -
+   ---
+   Override PHP maximum time for executing a script
+   Example -
 
-        <cms:call 'php-time-limit' '0' />
+     <cms:call 'php-time-limit' '0' />
 
-    ---
-    You should have downloaded this function from https://github.com/trendoman/Cms-Fu
-    Donate and help keep functions updated!
-    Support requests: tony.smirnov@gmail.com "Antony"
-    </cms:ignore>
-    <cms:php>
-        global $CTX;
-        $t = intval($CTX->get('timeout'));
-        if( $t < 0 ) $t = 120;
-        set_time_limit($t);
-    </cms:php>
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   </cms:ignore>
+   <cms:php>
+      if( ! function_exists('set_time_limit') ){
+         die('Error: PHP function "set_time_limit" is disabled on this server.');
+      }
+      global $CTX;
+      $t = intval($CTX->get('timeout'));
+      if( $t < 0 ) $t = 120;
+      set_time_limit($t);
+   </cms:php>
 </cms:func>

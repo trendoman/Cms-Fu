@@ -10,6 +10,9 @@ Make server wait. Count in seconds.
 <cms:call 'sleep' '5' />
 ```
 
+**NOTE: This functionality may be disabled by shared hosting provider ☺ (use VPS instead).** Check phpinfo on server to review the directive ***disable_functions*** under ***Core***.
+
+
 ## Parameters
 
 * for &mdash; time in seconds
