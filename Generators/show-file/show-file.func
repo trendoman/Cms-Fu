@@ -1,0 +1,25 @@
+<cms:func 'show-file' file=''><cms:ignore>
+   ---
+   Show file content as text i.e. without Couch parsing.
+   Example -
+
+      <cms:call 'show-file' 'mysnippets/funcs/Logs/show-file/README.md' />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   @date   24.02.2020
+   @last   16.07.2022
+   </cms:ignore>
+   <cms:php>
+      global $CTX;
+
+      $content = '';
+      $file = trim( strval( $CTX->get('file', $local=1) ), "// \\" );
+      $path = K_SITE_DIR . str_replace( array( K_SITE_URL, K_SITE_DIR, '\\' ), array( '', '', '/' ), $file );
+      if( is_file($path) ) $content = trim( @file_get_contents( $path )  );
+
+      return $content;
+   </cms:php>
+</cms:func>

@@ -2,6 +2,8 @@
 
 *Latest on top*
 
+* ## [Generators » show-file](Generators/show-file)
+   Show file content as text i.e. without Couch parsing.
 * ## [Server » login](Server/login)
    Login a user programmatically without a form.
 * ## [Converters &raquo; copy-hash](Converters/copy-hash)
