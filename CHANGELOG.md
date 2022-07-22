@@ -2,6 +2,8 @@
 
 *Latest on top*
 
+* ## [Generators » show-php](Generators/show-php)
+   Print PHP's error log or PHP info page.
 * ## [Generators » show-file](Generators/show-file)
    Show file content as text i.e. without Couch parsing.
 * ## [Server » login](Server/login)

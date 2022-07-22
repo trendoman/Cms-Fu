@@ -1,0 +1,31 @@
+<cms:func 'show-php' src='log'><cms:ignore>
+   ---
+   Print PHP's error log or PHP info page
+   Example -
+
+      <cms:call 'show-php' 'log' />
+      <cms:call 'show-php' 'info' />
+
+   ---
+   You should have downloaded this function from https://github.com/trendoman/Cms-Fu
+   Donate and help keep functions updated!
+   Support requests: tony.smirnov@gmail.com "Antony"
+   @date   24.02.2020
+   @last   16.07.2022
+   </cms:ignore>
+   <cms:if src eq 'info'>
+      <cms:php>phpinfo();</cms:php>
+   <cms:else />
+      <cms:php>
+         $html='';
+         $file = ini_get('error_log');
+         if( file_exists($file) )
+         {
+            $html .= '<pre>';
+            $html .= @file_get_contents( $file );
+            $html .= '</pre>';
+         }
+         return $html;
+       </cms:php>
+   </cms:if>
+</cms:func>
